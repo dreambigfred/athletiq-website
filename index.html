@@ -13,7 +13,7 @@
   --black:#080808;--offblack:#0F0F0F;--card:#141414;
   --border:#1E1E1E;--border2:#2A2A2A;
   --gold:#C8A45A;--gold-dim:#7A5F28;--gold-glow:rgba(200,164,90,0.09);
-  --white:#F2F0EA;--muted:#666660;--muted2:#383835;
+  --white:#F2F0EA;--muted:#9A9994;--muted2:#606058;
   --green:#3ECF8E;--red:#E05555;--blue:#4A9EFF;
 }
 html{scroll-behavior:smooth;}
@@ -47,7 +47,7 @@ nav{position:fixed;top:0;left:0;right:0;height:62px;background:rgba(8,8,8,.96);b
 .eyebrow::before{content:'';display:block;width:36px;height:1px;background:var(--gold);}
 .h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(68px,9.5vw,150px);line-height:.88;color:var(--white);margin-bottom:12px;animation:fu .7s .08s ease both;}
 .h1 .g{color:var(--gold);}
-.hsub{font-family:'Bebas Neue',sans-serif;font-size:clamp(18px,2.6vw,32px);letter-spacing:.04em;color:var(--muted);margin-bottom:32px;animation:fu .7s .14s ease both;line-height:1.15;max-width:800px;}
+.hsub{font-family:'Bebas Neue',sans-serif;font-size:clamp(18px,2.6vw,32px);letter-spacing:.04em;color:var(--white);opacity:.75;margin-bottom:32px;animation:fu .7s .14s ease both;line-height:1.15;max-width:800px;}
 .hbody{font-size:17px;font-weight:300;color:var(--muted);max-width:620px;line-height:1.78;margin-bottom:44px;animation:fu .7s .2s ease both;}
 .hbody strong{color:var(--white);font-weight:500;}
 .hctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:72px;animation:fu .7s .26s ease both;}
@@ -81,7 +81,7 @@ section{padding:100px 40px;border-top:1px solid var(--border);}
 .al li::before{content:'→';color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;flex-shrink:0;margin-top:1px;}
 .tg{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:3px 9px;margin-top:14px;background:var(--gold-glow);border:1px solid var(--gold-dim);color:var(--gold);}
 .tm{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:3px 9px;margin-top:14px;border:1px solid var(--border2);color:var(--muted2);}
-.banner{background:var(--card);border:1px solid var(--border2);border-left:3px solid var(--gold);padding:28px 36px;font-size:17px;font-weight:300;color:var(--muted);line-height:1.75;}
+.banner{background:var(--card);border:1px solid var(--border2);border-left:3px solid var(--gold);padding:28px 36px;font-size:17px;font-weight:300;color:var(--white);opacity:.85;line-height:1.75;}
 .banner strong{color:var(--white);font-weight:500;}
 
 /* PROOF */
@@ -193,6 +193,12 @@ tbody tr:hover td.ours{background:rgba(200,164,90,.1);}
 .model-who{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.02em;margin-bottom:6px;}
 .model-desc{font-size:12px;color:var(--muted);line-height:1.6;}
 
+/* ── COMPACT CHAT (solution section) ── */
+.chat-wrap2{background:var(--black);border:1px solid var(--border2);overflow:hidden;}
+.chat-body2{padding:16px;display:flex;flex-direction:column;gap:10px;}
+.msg-agent{display:flex;gap:10px;align-items:flex-start;}
+.adot{width:24px;height:24px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:8px;font-weight:700;color:var(--black);flex-shrink:0;margin-top:2px;}
+
 /* ABOUT */
 .ag{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:64px;}
 .aq{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4.5vw,62px);line-height:.93;margin-bottom:32px;}
@@ -256,11 +262,9 @@ footer{border-top:1px solid var(--border);padding:32px 40px;display:flex;align-i
   </a>
   <ul class="nav-links">
     <li><a href="#problem">The Problem</a></li>
-    <li><a href="#why-ai">Why AI</a></li>
-    <li><a href="#agent">The Agent</a></li>
-    <li><a href="#schools">For Schools</a></li>
+    <li><a href="#solution">The Solution</a></li>
+    <li><a href="#trend">Why Now</a></li>
     <li><a href="#journey">The Journey</a></li>
-    <li><a href="#changes">What Changes</a></li>
     <li><a href="#about">About</a></li>
   </ul>
   <a href="mailto:hello@athq.tech" class="bg">Get In Touch →</a>
@@ -270,10 +274,20 @@ footer{border-top:1px solid var(--border);padding:32px 40px;display:flex;align-i
 <!-- ══════════════════════════
      HERO
 ══════════════════════════ -->
+<!-- ══════════════════════════
+     HERO — THE PROOF
+══════════════════════════ -->
 <section id="hero">
   <div class="hgrid"></div><div class="hg1"></div><div class="hg2"></div>
 
   <div class="eyebrow">The Career Readiness Agent for College Athletes</div>
+
+  <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--muted);margin-bottom:24px;display:flex;align-items:center;gap:12px;">
+    <span style="color:var(--gold);font-size:14px;">/</span>
+    ath·LET·ik
+    <span style="color:var(--gold);font-size:14px;">/</span>
+    <span style="color:var(--muted2);margin-left:4px;">· Pronounced "athletic." Spelled with intention.</span>
+  </div>
 
   <h1 class="h1 disp">
     Built For<br/>
@@ -285,12 +299,12 @@ footer{border-top:1px solid var(--border);padding:32px 40px;display:flex;align-i
   </div>
 
   <p class="hbody">
-    <strong>athletIQ is the AI-powered career readiness agent built exclusively for college athletes.</strong> One agent. Every athlete. Activated from day one of enrollment. It builds professional identity, surfaces career paths, generates LinkedIn profiles, drafts networking outreach, and prepares athletes for the career they'll spend 40 years in — while they're still competing.
+    <strong>athletIQ is the AI-powered career readiness agent built exclusively for college athletes.</strong> One agent. Every athlete. Activated from day one. It builds professional identity, surfaces career paths, generates LinkedIn profiles, and prepares athletes for the career they'll spend 40 years in — while they're still competing.
   </p>
 
   <div class="hctas">
     <a href="#journey" class="bg">See The Journey →</a>
-    <a href="#agent" class="bo">See The Agent</a>
+    <a href="#solution" class="bo">See The Solution</a>
   </div>
 
   <div class="hstats">
@@ -309,36 +323,27 @@ footer{border-top:1px solid var(--border);padding:32px 40px;display:flex;align-i
   <div class="si">
     <div>
       <div class="lg">The Problem</div>
-      <h2 class="disp">Athlete Development<br/>Doesn't Scale.<br/>Until Now.</h2>
+      <h2 class="disp">The Math<br/>Has Never<br/>Worked.</h2>
     </div>
     <div class="sib">
-      The mandate is clear. Prepare athletes for life beyond sport. Build career readiness. Develop professional identity. Grow networks. <strong>But one athlete development director cannot give hundreds of athletes the personalized, ongoing guidance they need.</strong> The intention has always been there. The infrastructure hasn't. athletIQ is that infrastructure.
+      One athlete development staff member. Hundreds of athletes. The intention has always been there. <strong>The infrastructure hasn't.</strong> Career workshops deliver the same content to everyone. Career centers are built for the average student. Neither was built for the athlete — with a specific sport, specific skills, and a specific transition challenge unlike anyone else on campus.
     </div>
   </div>
 
-  <div class="banner" style="margin-bottom:2px;">
-    Fewer than 2% of college athletes reach a major professional league. The other 554,000 will spend 40+ years in careers after sport ends. <strong>The average athletic department has one staff member responsible for preparing all of them.</strong> The gap between what athletes need and what departments can deliver isn't a motivation problem. It's a scale problem. AI solves scale problems.
-  </div>
-
-  <div class="g4" style="margin-top:2px;">
-    <div class="cell">
-      <div class="bn">554K</div>
-      <div class="sdesc">student-athletes competing in NCAA sports in 2024–25 — an all-time high. One career readiness agent. Every single one of them.</div>
-      <div class="src">NCAA, 2025</div>
-    </div>
+  <div class="g3" style="margin-top:2px;">
     <div class="cell">
       <div class="bn">&lt;2%</div>
-      <div class="sdesc">reach a major professional league. The rest will spend four decades in careers they were never systematically prepared for while they were competing.</div>
+      <div class="sdesc">reach a major professional league. The rest will spend four decades in careers they were never systematically prepared for while competing.</div>
       <div class="src">NCAA Recruiting Facts</div>
     </div>
-    <div class="cell">
+    <div class="cell" style="background:var(--offblack);border-top:2px solid var(--gold);">
       <div class="bn">26%</div>
-      <div class="sdesc">of elite athletes experience severe mental health problems when their career ends. Career identity built early is the documented intervention.</div>
+      <div class="sdesc">of elite athletes experience severe mental health problems at career end. Career identity built early is the documented intervention — not a workshop at graduation.</div>
       <div class="src">IOC, 2023</div>
     </div>
     <div class="cell">
       <div class="bn">20–35%</div>
-      <div class="sdesc">of elite athletes experience anxiety, depression, or distress — especially around career transition. This is not a performance issue. It is a preparation issue.</div>
+      <div class="sdesc">experience anxiety, depression, or distress around career transition. This is a preparation problem. Preparation is solvable.</div>
       <div class="src">Systematic Review, 2024</div>
     </div>
   </div>
@@ -346,296 +351,132 @@ footer{border-top:1px solid var(--border);padding:32px 40px;display:flex;align-i
 
 
 <!-- ══════════════════════════
-     WHY AI
+     THE SOLUTION
 ══════════════════════════ -->
-<section id="why-ai">
+<section id="solution" class="sd">
   <div class="si">
     <div>
-      <div class="lg">Why AI</div>
-      <h2 class="disp">This Problem<br/>Was Always<br/>An AI Problem.</h2>
+      <div class="lg">The Solution</div>
+      <h2 class="disp">One Agent.<br/>Every Athlete.<br/>Day One.</h2>
     </div>
     <div class="sib">
-      The solution to athlete career development was never more staff, more workshops, or better software. It was always intelligence that could operate at the same scale as the problem — personalized to every athlete, running continuously, never losing context. <strong>That capability didn't exist until now.</strong> AI doesn't just improve the existing approach. It makes a fundamentally different approach possible for the first time.
+      This problem was always an AI problem. Human guidance doesn't scale — one counselor, finite hours, finite athletes they can meaningfully serve. <strong>AI has no ratio constraint.</strong> The same depth of personalized career guidance available to the athlete who walks into the office is now available to every athlete — simultaneously, continuously, from freshman year forward.
     </div>
   </div>
 
-  <!-- WHY NOTHING ELSE WORKED -->
-  <div class="banner" style="margin-bottom:2px;">
-    Every previous solution to this problem was constrained by a ratio. One counselor. Finite hours. Finite athletes they could meaningfully serve. <strong>AI has no ratio constraint.</strong> The same depth of guidance available to the athlete who walks into the office is now available to every athlete — simultaneously, continuously, without degradation in quality.
+  <!-- THE AGENT -->
+  <div class="g2">
+    <div class="cellg">
+      <div class="lg" style="margin-bottom:14px;">For The Athlete</div>
+      <div class="disp" style="font-size:36px;margin-bottom:12px;">The Career<br/>Readiness Agent</div>
+      <div class="sdesc" style="font-size:14px;line-height:1.78;margin-bottom:20px;">An athlete creates their Future Blueprint — sport, career interests, goals, digital presence. The agent activates immediately and leads the first conversation. It doesn't wait to be asked.</div>
+      <ul class="al">
+        <li>LinkedIn headline generated on day one — ready to publish</li>
+        <li>Career paths matched to their sport and interests</li>
+        <li>Networking outreach drafted in their voice</li>
+        <li>Certifications, internships, and side projects surfaced</li>
+        <li>Athletic skills translated into professional language</li>
+        <li>Weekly career summary — every Sunday, proactively</li>
+      </ul>
+      <div class="tg" style="margin-top:20px;">Free For Every Athlete</div>
+    </div>
+
+    <!-- LIVE CHAT MOCKUP -->
+    <div class="cello" style="padding:28px;">
+      <div class="lm" style="margin-bottom:12px;">Agent — Day One</div>
+      <div class="chat-wrap2">
+        <div class="chat-header">
+          <div class="chat-dot">AQ</div>
+          <div>
+            <div class="chat-name">athletIQ Career Agent</div>
+            <div class="chat-status">● Active · Marcus Webb · PG · Alabama State '27</div>
+          </div>
+        </div>
+        <div class="chat-body2">
+          <div class="msg msg-agent">
+            <div class="adot">AQ</div>
+            <div class="bubble bubble-a">Marcus — point guard, sports business, two years left. <strong>Here's your LinkedIn headline, ready now:</strong> "D1 Athlete | Sports Business & Brand Strategy | Alabama State '27." Your ability to read the floor and lead under pressure translates directly into brand management. <span style="color:var(--gold);">Want your career paths or your full About section first?</span></div>
+          </div>
+          <div class="msg" style="justify-content:flex-end;">
+            <div class="bubble bubble-u">Career paths</div>
+          </div>
+          <div class="msg msg-agent">
+            <div class="adot">AQ</div>
+            <div class="bubble bubble-a"><strong>Top three for your profile:</strong> Brand Partnerships, Sports Operations, Business Development. Brand Partnerships fits best — your court vision maps directly to managing multiple stakeholders. One certification to start: Google Digital Marketing. Free. Six hours. Opens doors immediately.</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- THE FOUR REASONS -->
+  <!-- FOR SCHOOLS -->
   <div class="g2" style="margin-top:2px;">
-
-    <div class="cellg">
-      <div class="lg" style="margin-bottom:12px;">01 — Scale Without Sacrifice</div>
-      <div class="disp" style="font-size:32px;margin-bottom:12px;">Human guidance doesn't scale.<br/>AI does.</div>
-      <div class="sdesc" style="font-size:14px;line-height:1.78;">A career counselor giving 45 minutes to every athlete across a 400-person roster would need 300 hours — every single week. That is not a staffing problem. That is a physics problem. The only solution is a system that delivers individualized guidance without consuming human hours to do it. AI is that system. Not because it replaces the human relationship — but because it handles the volume the human cannot, so the human can focus on what only a human can do.</div>
-    </div>
-
     <div class="cell">
-      <div class="lg" style="margin-bottom:12px;">02 — Memory That Compounds</div>
-      <div class="disp" style="font-size:32px;margin-bottom:12px;">It knows this athlete.<br/>Every conversation.</div>
-      <div class="sdesc" style="font-size:14px;line-height:1.78;">The problem with one-off career workshops and annual advising appointments is they have no memory. Each interaction starts from zero. The athlete re-explains themselves. The advice resets. AI changes that completely. Every conversation builds on the last. The profile deepens. The recommendations sharpen. Four years of context — sport, interests, goals, career conversations — available in every interaction. A human advisor carrying that context for 400 athletes simultaneously is impossible. An AI agent doing it is routine.</div>
+      <div class="lg" style="margin-bottom:14px;">For Athletic Departments</div>
+      <div class="disp" style="font-size:32px;margin-bottom:12px;">The Development<br/>Dashboard</div>
+      <div class="sdesc" style="font-size:14px;line-height:1.78;margin-bottom:16px;">Staff gets visibility across every athlete — career readiness scores, LinkedIn completion, engagement trends, athletes who need attention. One screen. Every athlete. No additional headcount required.</div>
+      <ul class="al">
+        <li>Career readiness scores — program-wide, updated automatically</li>
+        <li>Engagement tracking — who is active, who needs attention</li>
+        <li>Lightweight NIL disclosure log — athlete submits, staff reviews</li>
+        <li>White-labeled — the agent carries your institution's brand</li>
+      </ul>
+      <div class="tm" style="margin-top:16px;">Institutional Tier · Priced For HBCU + Mid-Major Budgets</div>
     </div>
-
     <div class="cell">
-      <div class="lg" style="margin-bottom:12px;">03 — Proactive, Not Reactive</div>
-      <div class="disp" style="font-size:32px;margin-bottom:12px;">It reaches out.<br/>Athletes don't have to.</div>
-      <div class="sdesc" style="font-size:14px;line-height:1.78;">The athletes who most need career development support are the least likely to walk through the door and ask for it. They are focused on competing, staying eligible, managing the schedule. Career planning feels distant when the season is in front of you. AI removes the dependency on the athlete initiating. The agent surfaces a recommendation. Sends a weekly summary. Opens a conversation. It does not wait for the athlete to be ready — it meets them where they are, when they are there.</div>
+      <div class="lg" style="margin-bottom:14px;">The White-Label Advantage</div>
+      <div class="disp" style="font-size:32px;margin-bottom:12px;">Your Brand.<br/>Your Outcome.</div>
+      <div class="sdesc" style="font-size:14px;line-height:1.78;margin-bottom:16px;">The agent doesn't say "athletIQ." It says "Alabama State Career Agent — powered by athletIQ." Every athlete sees their institution's investment in their future. Every recruit hears it in the visit.</div>
+      <div class="banner" style="margin-top:0;font-size:15px;">
+        <strong>You get the credit.</strong> We build the infrastructure.
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="cellg">
-      <div class="lg" style="margin-bottom:12px;">04 — Personalization At Every Level</div>
-      <div class="disp" style="font-size:32px;margin-bottom:12px;">Not a program.<br/>A person.</div>
-      <div class="sdesc" style="font-size:14px;line-height:1.78;">Career workshops deliver the same content to every athlete. Career centers offer the same resources. Both are built around cohorts — they serve the average athlete reasonably well and the individual athlete poorly. AI inverts that. The career paths recommended to a junior point guard interested in sports business are different from those recommended to a freshman volleyball player interested in healthcare. The LinkedIn headline generated is different. The networking strategy is different. The certification recommendations are different. Every output is specific to this athlete — not a template with a name swapped in.</div>
+
+<!-- ══════════════════════════
+     THE TREND — WHY NOW
+══════════════════════════ -->
+<section id="trend">
+  <div class="si">
+    <div>
+      <div class="lg">Why Now</div>
+      <h2 class="disp">The Moment<br/>Has Changed.<br/>The Platform<br/>Hasn't.<br/><span style="color:var(--gold);">Until Now.</span></h2>
     </div>
-
+    <div class="sib">
+      The NIL era permanently changed the athlete's relationship to their professional identity. Athletes are already thinking about their brand, their business, and their future in ways previous generations were not. <strong>The demand for career development infrastructure has never been higher. The technology to deliver it at scale has never been more capable.</strong> These two curves are crossing right now.
+    </div>
   </div>
 
-  <!-- THE TIMING ARGUMENT -->
-  <div style="margin-top:2px;" class="g3">
+  <div class="g3" style="margin-top:32px;">
     <div class="cell">
-      <div class="lg" style="margin-bottom:10px;">Why Not Earlier</div>
-      <div style="font-size:13px;color:var(--muted);line-height:1.75;">The large language models capable of genuinely personalized career guidance at this quality level did not exist five years ago. What existed were rule-based chatbots, generic job boards, and content libraries dressed up as career tools. They failed because the underlying technology couldn't do what the problem requires. The technology can now.</div>
+      <div class="lg" style="margin-bottom:10px;">The Athlete Has Changed</div>
+      <div class="sdesc" style="font-size:14px;line-height:1.78;">NIL gave athletes agency over their professional identity years earlier than any previous generation. They are already thinking like professionals. They need a system that meets them where they are — not a workshop built for where athletes used to be.</div>
     </div>
     <div class="cell" style="background:var(--offblack);border-top:2px solid var(--gold);">
-      <div class="lg" style="margin-bottom:10px;">Why Not A Human</div>
-      <div style="font-size:13px;color:var(--muted);line-height:1.75;">Human advisors are irreplaceable for the highest-leverage moments — the crisis conversation, the mentor relationship, the referral that opens a door. athletIQ is not built to replace those moments. It is built to handle the volume of smaller moments — the weekly check-in, the LinkedIn rewrite, the certification recommendation — so that human advisors can spend their time on the moments only they can handle.</div>
+      <div class="lg" style="margin-bottom:10px;">The Technology Is Ready</div>
+      <div class="sdesc" style="font-size:14px;line-height:1.78;">The large language models capable of genuinely personalized career guidance at this quality level did not exist five years ago. What existed were rule-based chatbots dressed up as career tools. They failed because the technology couldn't do what the problem required. It can now.</div>
     </div>
     <div class="cell">
-      <div class="lg" style="margin-bottom:10px;">Why Now</div>
-      <div style="font-size:13px;color:var(--muted);line-height:1.75;">554,000 student-athletes. The NIL era has permanently changed the athlete's relationship to their professional identity — athletes are already thinking about their brand, their business, and their future in ways previous generations were not. The demand for career development infrastructure has never been higher. The technology to deliver it at scale has never been more capable. The window is now.</div>
+      <div class="lg" style="margin-bottom:10px;">The Market Is Unserved</div>
+      <div class="sdesc" style="font-size:14px;line-height:1.78;">554,000 student-athletes. No platform built specifically for them — personalized to each one, proactive from freshman year, running continuously through post-graduation. The market exists. The infrastructure doesn't. That is the gap athletIQ fills.</div>
     </div>
   </div>
 </section>
 
 
 <!-- ══════════════════════════
-     THE AGENT
-══════════════════════════ -->
-<section id="agent" class="sd">
-  <div class="si">
-    <div>
-      <div class="lg">The Career Readiness Agent</div>
-      <h2 class="disp">One Agent.<br/>Three Core<br/>Capabilities.<br/>Every Athlete.</h2>
-    </div>
-    <div class="sib">
-      <strong>This is not a passive chatbot.</strong> The Career Readiness Agent is an intelligent, proactive system that helps athletes build professional identity, discover opportunities, and grow their network — automatically, from the moment they create their Future Blueprint. Three integrated capabilities. One unified experience. Every athlete on your roster.
-    </div>
-  </div>
-
-  <div class="caps">
-    <!-- WIDE — THE AGENT OVERVIEW -->
-    <div class="cap-wide">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
-        <div>
-          <div class="cap-icon">◆</div>
-          <div class="cap-title disp">The Career Readiness Agent</div>
-          <div class="cap-body" style="font-size:14px;margin-bottom:20px;">Triggered the moment an athlete creates their Future Blueprint — collecting their identity, sport, career interests, goals, and digital presence. The agent uses that profile as its intelligence layer and immediately begins generating personalized guidance. <strong style="color:var(--white);font-weight:500;">It doesn't wait for the athlete to ask. It leads.</strong></div>
-          <ul class="al">
-            <li>Proactive — surfaces recommendations before the athlete asks</li>
-            <li>Personalized — every output built from this specific athlete's profile</li>
-            <li>Action-oriented — every interaction ends with one clear next step</li>
-            <li>Continuous — improves with every profile update and conversation</li>
-          </ul>
-          <div class="tg" style="margin-top:20px;">One Agent. Always Active.</div>
-        </div>
-        <!-- LIVE CHAT MOCKUP -->
-        <div>
-          <div class="lm" style="margin-bottom:12px;">Live Agent Interaction</div>
-          <div class="chat-wrap">
-            <div class="chat-header">
-              <div class="chat-dot">AQ</div>
-              <div>
-                <div class="chat-name">athletIQ Career Agent</div>
-                <div class="chat-status">● Active — Marcus Webb · PG · Alabama State '27</div>
-              </div>
-            </div>
-            <div class="chat-body">
-              <div class="msg">
-                <div class="adot">AQ</div>
-                <div class="bubble bubble-a">Marcus — based on your profile, you're interested in sports business and entrepreneurship. <strong>Here's your LinkedIn headline, ready to publish:</strong> "D1 Athlete | Sports Business & Brand Strategy | Alabama State '27." Want me to write your full About section next — or would you rather start with career paths?</div>
-              </div>
-              <div class="msg" style="justify-content:flex-end;">
-                <div class="bubble bubble-u">Career paths first</div>
-              </div>
-              <div class="msg">
-                <div class="adot">AQ</div>
-                <div class="bubble bubble-a">Your leadership, performance under pressure, and team coordination translate directly into three paths: <strong>Brand Partnerships, Sports Operations, and Business Development.</strong> Based on your entrepreneurship interest, Brand Partnerships fits best. One certification I'd start this semester: Google Digital Marketing — free, 6 hours, adds immediate credibility. Want the link?</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CAPABILITY 1 -->
-    <div class="cap" data-n="01">
-      <div class="cap-icon">◎</div>
-      <div class="cap-title disp">LinkedIn &amp;<br/>Personal Brand</div>
-      <div class="cap-body">
-        Generates LinkedIn headlines, rewrites About sections, identifies missing profile sections, recommends skills to add, and suggests content ideas — all from the athlete's sport, position, and career interests. The athlete's professional brand is built automatically, not assembled in a panic senior year.
-        <ul class="al" style="margin-top:14px;">
-          <li>LinkedIn headline generated on profile creation</li>
-          <li>About section written in the athlete's voice</li>
-          <li>Transferable skills identified and translated professionally</li>
-          <li>Content strategy recommended based on career path</li>
-        </ul>
-      </div>
-      <div class="tm">LinkedIn Optimization Component</div>
-    </div>
-
-    <!-- CAPABILITY 2 -->
-    <div class="cap" data-n="02">
-      <div class="cap-icon">🎯</div>
-      <div class="cap-title disp">Career<br/>Opportunities</div>
-      <div class="cap-body">
-        Proactively surfaces career paths, internship recommendations, certifications, skill development plans, and action roadmaps — aligned to the athlete's interests, industry preferences, and identified skill gaps. Not a job board. A personalized development engine.
-        <ul class="al" style="margin-top:14px;">
-          <li>Career paths matched to athlete interests and sport</li>
-          <li>Internship and certification recommendations</li>
-          <li>Skill gap identification and learning path suggestions</li>
-          <li>Personalized career readiness action plan</li>
-        </ul>
-      </div>
-      <div class="tm">Career Opportunity Component</div>
-    </div>
-
-    <!-- CAPABILITY 3 -->
-    <div class="cap" data-n="03">
-      <div class="cap-icon">⬡</div>
-      <div class="cap-title disp">Networking<br/>Intelligence</div>
-      <div class="cap-body">
-        Recommends alumni connections, mentor matches, and networking opportunities aligned with the athlete's career goals. Drafts LinkedIn outreach and connection messages in the athlete's voice. Helps athletes build strategic professional relationships before they need them.
-        <ul class="al" style="margin-top:14px;">
-          <li>Alumni and mentor recommendations by career interest</li>
-          <li>LinkedIn outreach drafted in athlete's voice</li>
-          <li>Networking opportunities and events surfaced</li>
-          <li>Follow-up and relationship-building guidance</li>
-        </ul>
-      </div>
-      <div class="tm">Networking Recommendation Component</div>
-    </div>
-  </div>
-
-  <div class="proof">
-    <div class="pi"><div class="pn">1</div><div class="pl">Unified Career<br/>Readiness Agent</div></div>
-    <div class="pi"><div class="pn">3</div><div class="pl">Integrated Capabilities —<br/>One Experience</div></div>
-    <div class="pi"><div class="pn">Day 1</div><div class="pl">Agent Activates On<br/>Profile Creation</div></div>
-    <div class="pi"><div class="pn">Always</div><div class="pl">Proactive — Never<br/>Waits To Be Asked</div></div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════
-     FOR SCHOOLS
-══════════════════════════ -->
-<section id="schools">
-  <div class="si">
-    <div>
-      <div class="lg">For Athletic Departments</div>
-      <h2 class="disp">The AI Workforce<br/>Layer Your<br/>Development<br/>Team Needs.</h2>
-    </div>
-    <div class="sib">
-      athletIQ doesn't replace your athlete development staff. <strong>It gives them leverage.</strong> One staff member can now deliver the depth of personalized career guidance previously possible for a team of ten — because the AI is doing the work that doesn't require a human, so your humans can focus on the work that does.
-    </div>
-  </div>
-
-  <!-- DASHBOARD MOCKUP + DESCRIPTION -->
-  <div class="g2">
-    <div class="cell">
-      <div class="lm" style="margin-bottom:16px;">Athlete Development Dashboard</div>
-      <div class="dash-mock">
-        <div class="dash-header">
-          <div class="dash-title">Alabama State · Athlete Development</div>
-          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);">47 Athletes Active</div>
-        </div>
-        <div class="dash-body">
-          <div class="dash-stats">
-            <div class="dash-stat"><div class="dash-num">127</div><div class="dash-lbl">Total Athletes</div></div>
-            <div class="dash-stat"><div class="dash-num">84</div><div class="dash-lbl">Profiles Complete</div></div>
-            <div class="dash-stat"><div class="dash-num">61%</div><div class="dash-lbl">LinkedIn Active</div></div>
-            <div class="dash-stat"><div class="dash-num">12</div><div class="dash-lbl">Need Attention</div></div>
-          </div>
-          <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:8px;padding:0 2px;">Athlete Career Readiness</div>
-          <div>
-            <div class="dash-row">
-              <div><div class="dash-athlete">Marcus Webb</div><div class="dash-sport">Basketball · Junior</div></div>
-              <div style="text-align:right;"><div class="dash-score score-high">87%</div><div class="dash-bar"><div class="dash-bar-fill" style="width:87%"></div></div></div>
-            </div>
-            <div class="dash-row">
-              <div><div class="dash-athlete">Aaliyah Johnson</div><div class="dash-sport">Track · Sophomore</div></div>
-              <div style="text-align:right;"><div class="dash-score score-mid">62%</div><div class="dash-bar"><div class="dash-bar-fill" style="width:62%"></div></div></div>
-            </div>
-            <div class="dash-row">
-              <div><div class="dash-athlete">Devon Carter</div><div class="dash-sport">Football · Senior</div></div>
-              <div style="text-align:right;"><div class="dash-score score-low">31%</div><div style="color:var(--red);font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;">NEEDS ATTENTION</div></div>
-            </div>
-            <div class="dash-row">
-              <div><div class="dash-athlete">Simone Williams</div><div class="dash-sport">Volleyball · Freshman</div></div>
-              <div style="text-align:right;"><div class="dash-score score-mid">44%</div><div class="dash-bar"><div class="dash-bar-fill" style="width:44%"></div></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cello">
-      <div class="lg" style="margin-bottom:16px;">What The Dashboard Answers</div>
-      <div style="font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:20px;">The Athlete Development Dashboard gives your staff visibility into what the agent is building — and who needs human attention. One screen. Every athlete. The questions your department needs to answer, answered automatically.</div>
-      <ul class="al" style="margin-bottom:24px;">
-        <li>How prepared is every athlete for life after sport — right now?</li>
-        <li>Which athletes are engaged and which are falling behind?</li>
-        <li>Which seniors haven't completed their LinkedIn profiles?</li>
-        <li>Which athletes are interested in entrepreneurship?</li>
-        <li>Where is the agent making the most impact?</li>
-        <li>Which athletes need a human conversation today?</li>
-      </ul>
-      <div style="font-size:13px;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);padding-top:16px;">
-        <strong style="color:var(--gold);font-weight:600;">Lightweight NIL visibility included:</strong> Athletes can log NIL disclosures directly. Staff can view and acknowledge. Simple oversight — not a compliance platform.
-      </div>
-    </div>
-  </div>
-
-  <!-- THE ROI CASE -->
-  <div style="margin-top:2px;" class="g3">
-    <div class="cell">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--gold);line-height:1;margin-bottom:10px;">Scale</div>
-      <div class="sdesc">One athlete development staff member now delivers meaningful, personalized career guidance to every athlete — not just the ones who walk into the office. AI handles the work that doesn't require a human, so humans focus on the work that does.</div>
-    </div>
-    <div class="cell">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--gold);line-height:1;margin-bottom:10px;">Recruit</div>
-      <div class="sdesc">"We have an AI that starts preparing every athlete for their career from day one of enrollment." That answer in a recruiting visit differentiates immediately — especially for athletes and families who understand that sport ends and careers last forty years.</div>
-    </div>
-    <div class="cell">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--gold);line-height:1;margin-bottom:10px;">Prove</div>
-      <div class="sdesc">The dashboard gives leadership visibility into athlete development outcomes with real data — career readiness scores, LinkedIn completion, engagement trends. "How are we preparing athletes for life?" is now a question you can answer with evidence.</div>
-    </div>
-  </div>
-
-  <!-- HOW IT WORKS -->
-  <div class="steps">
-    <div class="step"><div class="stepn disp">01</div><div class="stept disp">Athlete Signs Up</div><div class="stepb">Creates their Future Blueprint — sport, career interests, goals, digital presence. Takes 5 minutes. No staff required.</div></div>
-    <div class="step"><div class="stepn disp">02</div><div class="stept disp">Agent Activates</div><div class="stepb">Immediately generates their LinkedIn headline, identifies career paths, and surfaces first opportunity recommendation. Agent leads — athlete doesn't have to ask.</div></div>
-    <div class="step"><div class="stepn disp">03</div><div class="stept disp">Department Connects</div><div class="stepb">Staff gets the development dashboard. Athlete profiles link automatically. Readiness scores, engagement data, and attention flags — all visible immediately.</div></div>
-    <div class="step"><div class="stepn disp">04</div><div class="stept disp">Athlete Grows</div><div class="stepb">Professional identity builds continuously. Career direction clarifies. Network expands. The athlete comes back because it's genuinely useful — not because they're required to.</div></div>
-    <div class="step"><div class="stepn disp">05</div><div class="stept disp">Outcomes Improve</div><div class="stepb">Better post-grad placement. Stronger recruiting story. Staff time redirected to high-value human work. A program that can prove it develops athletes — not just trains them.</div></div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════
-     THE ATHLETE JOURNEY
+     THE JOURNEY
 ══════════════════════════ -->
 <section id="journey" class="sd">
   <div class="si">
     <div>
       <div class="lg">The Athlete Journey</div>
-      <h2 class="disp">Four Years Of<br/>Career Readiness.<br/>Built While They<br/>Still Compete.</h2>
+      <h2 class="disp">Four Years.<br/>Built While<br/>They Compete.</h2>
     </div>
     <div class="sib">
-      Every career readiness platform starts at graduation. <strong>athletIQ starts on day one.</strong> Because four years of compounding professional identity is worth infinitely more than four weeks of resume panic. This is what the agent builds — year by year — while the athlete is focused on competing.
+      Every career readiness platform starts at graduation. <strong>athletIQ starts on day one.</strong> Four years of compounding professional identity — built automatically, continuously, from everything the athlete is already doing. This is what changes.
     </div>
   </div>
 
@@ -644,8 +485,8 @@ footer{border-top:1px solid var(--border);padding:32px 40px;display:flex;align-i
       <div class="jleft"><div class="jylabel">Y1</div><div class="jysub">Freshman<br/>Foundation</div></div>
       <div class="jright">
         <div class="jtitle disp">Profile Built. Agent Activated. Brand Started.</div>
-        <div class="jbody">Day one of enrollment. Athlete creates their Future Blueprint. <strong>The agent generates their LinkedIn headline and professional bio within minutes of signup</strong> — not senior year. Career paths are surfaced based on their sport, position, and stated interests. First networking recommendations appear. The athlete starts seeing themselves as a professional before they've played a single game.</div>
-        <div class="jagent"><strong>Agent, Day 1:</strong> "Welcome Marcus. Based on your profile — point guard, sports business interest, entrepreneurship goals — here's your LinkedIn headline: 'D1 Athlete | Sports Business & Brand Strategy | Alabama State '27.' Here are three career paths that fit. And here's the one certification I'd start this semester. It takes 6 hours and it opens doors immediately."</div>
+        <div class="jbody">Day one. Athlete creates their Future Blueprint. <strong>The agent generates their LinkedIn headline and surfaces their first career paths within minutes.</strong> Not senior year. Day one. The athlete starts seeing themselves as a professional before they've played a single game.</div>
+        <div class="jagent"><strong>Agent, Day 1:</strong> "You're a point guard interested in sports business. Here's your LinkedIn headline: 'D1 Athlete | Sports Business & Brand Strategy | Alabama State '27.' Here are three career paths that fit — and one certification I'd start this semester. It takes six hours and opens doors immediately."</div>
       </div>
     </div>
 
@@ -653,17 +494,17 @@ footer{border-top:1px solid var(--border);padding:32px 40px;display:flex;align-i
       <div class="jleft"><div class="jylabel">Y2</div><div class="jysub">Sophomore<br/>Direction</div></div>
       <div class="jright">
         <div class="jtitle disp">Clarity Sharpens. Network Begins.</div>
-        <div class="jbody">The agent now has context from an ongoing relationship. Career direction is narrowing. The professional narrative is sharpening. <strong>The agent starts surfacing strategic networking recommendations</strong> — alumni in target industries, mentor matches, events worth attending. Outreach is drafted in the athlete's voice and ready to send. The athlete is building professional relationships two years before they need them.</div>
-        <div class="jagent"><strong>Agent, Month 14:</strong> "You've been consistent about brand partnerships as your target. Your narrative is getting strong. Here's who you should connect with this month — I drafted the message. Also: your About section needs one update to reflect the leadership experience you mentioned. Want me to rewrite it now?"</div>
+        <div class="jbody">The agent has context from an ongoing relationship. Career direction is narrowing. <strong>Networking recommendations surface — alumni in target industries, outreach drafted in the athlete's voice and ready to send.</strong> Professional relationships start two years before they're needed.</div>
+        <div class="jagent"><strong>Agent, Month 14:</strong> "Your brand partnerships direction is getting strong. Here's who you should connect with this month — I drafted the message. Your About section also needs one update. Want me to rewrite it now?"</div>
       </div>
     </div>
 
     <div class="jyear">
       <div class="jleft"><div class="jylabel">Y3</div><div class="jysub">Junior<br/>Momentum</div></div>
       <div class="jright">
-        <div class="jtitle disp">Gaps Identified. Path Accelerated.</div>
-        <div class="jbody">The agent knows this athlete well now. It identifies the specific gap between where they are and where they're going — and recommends exactly what fills it. <strong>An internship application. One missing certification. One conversation to have.</strong> The agent drafts the materials. The athlete reviews and acts. Your department is delivering the kind of personalized career advising that previously required a dedicated counselor for every athlete.</div>
-        <div class="jagent"><strong>Agent, Month 28:</strong> "You're positioned well for brand partnerships — but there's a gap. No documented project experience outside sport. Here's a program worth applying to this spring — I drafted your application statement. And here's a networking message for someone who could become your first mentor in that space."</div>
+        <div class="jtitle disp">The Gap Gets Named. The Path Gets Built.</div>
+        <div class="jbody">The agent identifies the specific gap between where this athlete is and where they're going — then recommends exactly what fills it. <strong>An application. One certification. One conversation to have.</strong> The materials are drafted. The athlete reviews and acts.</div>
+        <div class="jagent"><strong>Agent, Month 28:</strong> "You're positioned well — but there's a gap. No documented project outside sport. Here's a program worth applying to this spring. I drafted your application statement. And here's a networking message for someone who could be your first mentor in this space."</div>
       </div>
     </div>
 
@@ -671,8 +512,8 @@ footer{border-top:1px solid var(--border);padding:32px 40px;display:flex;align-i
       <div class="jleft"><div class="jylabel">Y4</div><div class="jysub">Senior<br/>Launch</div></div>
       <div class="jright">
         <div class="jtitle disp">Ready. Not Scrambling.</div>
-        <div class="jbody">Three years of compounding career development. LinkedIn optimized. Professional narrative complete. Network active. Career target clear. Internship applications submitted. <strong>The athlete who used athletIQ doesn't graduate figuring it out from scratch.</strong> They graduate with momentum — and your department delivered it without adding headcount.</div>
-        <div class="jagent"><strong>Agent, Month 46:</strong> "Graduation in 8 weeks. Here's where you stand: LinkedIn complete and performing well. Three target companies identified. Outreach drafted for two of them. Your sport gave you everything employers in this space are looking for. Let's make sure they know it — and let's talk about how to handle the transition when the structure of sport disappears."</div>
+        <div class="jbody">Three years of compounding career development. LinkedIn complete. Professional narrative built. Network active. Career target clear. <strong>The athlete who used athletIQ doesn't graduate figuring it out from scratch.</strong> They graduate with momentum.</div>
+        <div class="jagent"><strong>Agent, Month 46:</strong> "Graduation in 8 weeks. LinkedIn complete. Three target companies identified. Outreach drafted. Your sport gave you everything employers in this space are looking for. Let's make sure they know it."</div>
       </div>
     </div>
 
@@ -683,75 +524,9 @@ footer{border-top:1px solid var(--border);padding:32px 40px;display:flex;align-i
       </div>
       <div class="jright" style="background:var(--offblack);border-top:2px solid var(--gold);">
         <div class="jtitle disp">The Agent Doesn't Stop at Graduation.</div>
-        <div class="jbody">The loss of athletic structure — the schedule, the team, the daily purpose — drives severe mental health challenges in more than 1 in 4 former elite athletes. <strong>For athletIQ athletes, the agent provides continuity.</strong> Career tracking. Network maintenance. Opportunity surfacing. The same mentor-level guidance that carried them through four years of competition carries them into the next chapter. Your alumni outcomes improve. Your institutional reputation compounds.</div>
-        <div class="jagent"><strong>Agent, Month 1 Post-Graduation:</strong> "Sport is over. The structure you had is gone — and that's one of the hardest transitions anyone makes. Here's what we focus on this month: one application, one networking conversation, one thing that builds momentum. You built everything you need over four years. Now we put it to work."</div>
+        <div class="jbody">The loss of athletic structure drives severe mental health challenges in more than 1 in 4 former elite athletes. <strong>For athletIQ athletes, the agent provides continuity.</strong> Career tracking. Network maintenance. Opportunity surfacing. The same guidance that carried them through four years of competition carries them into what comes next.</div>
+        <div class="jagent"><strong>Agent, Month 1 Post-Graduation:</strong> "Sport is over. The structure is gone — and that's one of the hardest transitions anyone makes. Here's what we focus on this month: one application, one conversation, one thing that builds momentum. You built everything you need. Now we put it to work."</div>
       </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════
-     WHAT CHANGES
-══════════════════════════ -->
-<section id="changes">
-  <div class="si">
-    <div>
-      <div class="lg">What Changes</div>
-      <h2 class="disp">Everything<br/>The Athlete<br/>Needed.<br/>Finally<br/>Possible.</h2>
-    </div>
-    <div class="sib">
-      The gap between what athlete development staff intend to deliver and what they can actually deliver at scale has existed for decades. <strong>The tools didn't exist.</strong> Now they do. Here is what changes — for the athlete, for the department, and for the institution — when one AI agent is running for every athlete from day one.
-    </div>
-  </div>
-
-  <!-- BEFORE / AFTER -->
-  <div class="g2">
-    <div class="cell">
-      <div class="lm" style="margin-bottom:20px;">Before athletIQ</div>
-      <ul class="al">
-        <li>One staff member. Hundreds of athletes. Career guidance rationed to whoever walks in the door.</li>
-        <li>Athletes graduate with a blank LinkedIn page and no professional narrative.</li>
-        <li>Career development starts at senior year — when there's no time left to build anything.</li>
-        <li>Athletic skills — leadership, resilience, performance under pressure — never translated into language employers recognize.</li>
-        <li>The department wants to help every athlete. The math doesn't work.</li>
-        <li>The majority of athletes leave sport without a documented professional identity, an active network, or a clear plan.</li>
-      </ul>
-    </div>
-    <div class="cellg">
-      <div class="lg" style="margin-bottom:20px;">After athletIQ</div>
-      <ul class="al">
-        <li>One AI agent. Every athlete. Personalized career guidance from day one of enrollment.</li>
-        <li>LinkedIn headline generated on day one. Profile builds continuously from their sport and interests.</li>
-        <li>Four years of compounding career identity — built automatically from everything the athlete is already doing.</li>
-        <li>Athletic experience translated into professional language the moment the agent activates.</li>
-        <li>The department delivers on its mandate. At scale. Without adding headcount.</li>
-        <li>Athletes graduate with direction, confidence, and a documented professional identity.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- WHERE IT STARTS -->
-  <div class="banner" style="margin-top:2px;">
-    It starts with an athlete creating their Future Blueprint — five minutes, four questions. Sport. Career interests. Goals. Digital presence. The agent activates. The department connects. The employer sees the pipeline. <strong>The athlete leaves sport ready for what comes next.</strong>
-  </div>
-
-  <!-- THE THREE SIDES -->
-  <div class="g3" style="margin-top:2px;">
-    <div class="cell">
-      <div class="lg" style="margin-bottom:12px;">The Athlete</div>
-      <div class="disp" style="font-size:28px;margin-bottom:10px;">Free.<br/>From Day One.</div>
-      <div class="sdesc">Every athlete creates a Future Blueprint and gets a personal AI Career Readiness Agent. LinkedIn generated. Career paths surfaced. Networking guidance built. No cost. No institution required. The agent builds from the first conversation — and keeps compounding every week.</div>
-    </div>
-    <div class="cell" style="background:var(--offblack);border-top:2px solid var(--gold);">
-      <div class="lg" style="margin-bottom:12px;">The Department</div>
-      <div class="disp" style="font-size:28px;margin-bottom:10px;">Your Brand.<br/>Your Outcome.</div>
-      <div class="sdesc">Athletic departments connect to get the development dashboard and white-label the experience. The agent carries the institution's name. Every athlete sees their department invested in their future. Every recruit hears it in the visit. The department gets the credit. athletIQ builds the infrastructure.</div>
-    </div>
-    <div class="cell">
-      <div class="lg" style="margin-bottom:12px;">The Employer</div>
-      <div class="disp" style="font-size:28px;margin-bottom:10px;">Earlier.<br/>Better Access.</div>
-      <div class="sdesc">Companies access a career-ready athlete pipeline with four years of profile depth — career interests, skills, LinkedIn, targets — before graduation. Not post-sport. While they're still developing. The most career-ready, most mission-aligned talent pipeline in the market.</div>
     </div>
   </div>
 </section>
@@ -760,20 +535,19 @@ footer{border-top:1px solid var(--border);padding:32px 40px;display:flex;align-i
 <!-- ══════════════════════════
      ABOUT
 ══════════════════════════ -->
-<section id="about" class="sd">
+<section id="about">
   <div class="lg">About</div>
   <div class="ag">
     <div>
       <div class="aq disp">"The system was built to develop athletes. <span class="g">Nobody built the system to develop the person.</span>"</div>
       <div class="ab">
-        <p>athletIQ was built by a former Division I athlete at Alabama State University — an HBCU — who lived this gap firsthand. Four years of elite athletic preparation. Zero preparation for the career that came after.</p>
-        <p>The problem isn't intention. Every athletic department wants to prepare athletes for life beyond sport. The problem is infrastructure. One staff member. Hundreds of athletes. The math has never worked. <strong>AI changes the math.</strong></p>
-        <p>athletIQ is built for the programs where the gap is widest first — HBCUs and mid-major programs where the athlete talent is world-class, the development mandate is identical to Power-4 schools, and the support resources are not.</p>
+        <p>athletIQ was built by a former college athlete who played at Huntington College and Jefferson Davis Community College before graduating from Alabama State University — an HBCU. He lived this gap firsthand. Years of elite athletic preparation. Zero preparation for the career that followed.</p>
+        <p>The problem isn't intention. Every athletic department wants to prepare athletes for life beyond sport. <strong>The problem is infrastructure.</strong> AI changes the math. athletIQ is built for the programs where the gap is widest first — HBCUs and mid-major programs where the athlete talent is world-class and the resources are not.</p>
       </div>
     </div>
     <div class="creds">
       <div class="cred">
-        <div class="ct">Former D1 Athlete — Alabama State University (HBCU)</div>
+        <div class="ct">College Athlete — Huntington College + Jefferson Davis CC · Graduate, Alabama State University (HBCU)</div>
         <div class="cb">Built from the lived experience of an athlete who needed this. Designed for the programs that need it most.</div>
       </div>
       <div class="cred">
@@ -785,8 +559,8 @@ footer{border-top:1px solid var(--border);padding:32px 40px;display:flex;align-i
         <div class="cb">Years of direct mentorship with athletes navigating the transition from sport to career.</div>
       </div>
       <div class="cred">
-        <div class="ct">Systems Builder — Azure · Copilot · AWS Certified</div>
-        <div class="cb">Built to compound over time. Infrastructure — not a feature. Not a tool. A system.</div>
+        <div class="ct">AI + Automation — Azure · Copilot · AWS Certified</div>
+        <div class="cb">Built to compound over time. Infrastructure — not a feature. A system.</div>
       </div>
     </div>
   </div>
