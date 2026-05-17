@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>athletIQ — Built for the 98%</title>
+<meta name="description" content="You trained for the game. We build what comes after. athletIQ is the AI-powered career readiness platform built exclusively for student-athletes."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#060606;--off:#0C0C0C;--card:#111111;--card2:#161616;
+  --border:#1F1F1F;--border2:#2C2C2C;
+  --gold:#C9A84C;--gold2:#E2C47A;
+  --gold-dim:rgba(201,168,76,0.15);--gold-glow:rgba(201,168,76,0.07);
+  --white:#F5F2EC;--muted:#B0ABA4;--muted2:#7A7670;--green:#2ECC8A;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+
+/* TYPE */
+.display{font-family:'Bebas Neue',sans-serif;letter-spacing:.02em;line-height:.88;}
+.mono{font-family:'DM Mono',monospace;}
+.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;}
+.gold{color:var(--gold);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(6,6,6,0);border-bottom:1px solid rgba(31,31,31,0);transition:background .4s,border-color .4s;backdrop-filter:blur(0px);transition:all .4s;}
+nav.scrolled{background:rgba(6,6,6,.95);border-bottom-color:var(--border);backdrop-filter:blur(20px);}
+.nav-logo img{height:34px;mix-blend-mode:lighten;display:block;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;background:var(--gold);color:var(--black);padding:10px 22px;border:none;cursor:pointer;text-decoration:none;font-weight:600;transition:background .2s;}
+.nav-cta:hover{background:var(--gold2);}
+
+/* BUTTONS */
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--black);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:16px 36px;border:none;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px);}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--white);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;padding:16px 36px;border:1px solid var(--border2);cursor:pointer;text-decoration:none;transition:all .2s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+/* SECTIONS */
+section{padding:120px 48px;}
+.inner{max-width:1140px;margin:0 auto;}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 80px;position:relative;overflow:hidden;background:var(--black);}
+.orb1{position:absolute;top:-8%;right:-4%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.055) 0%,transparent 65%);animation:orb 14s ease-in-out infinite;pointer-events:none;}
+.orb2{position:absolute;bottom:-18%;left:-8%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.035) 0%,transparent 68%);animation:orb 18s ease-in-out infinite reverse;pointer-events:none;}
+@keyframes orb{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-30px,25px) scale(1.06);}}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 90% 80% at 50% 25%,black 20%,transparent 85%);}
+.hero-vline{position:absolute;top:0;right:160px;width:1px;height:50%;background:linear-gradient(transparent,var(--gold),transparent);opacity:.18;}
+.hero-c{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;}
+.h-eye{display:flex;align-items:center;gap:16px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;animation:fu .8s ease both;}
+.h-eye::before{content:'';display:block;width:40px;height:1px;background:var(--gold);}
+.h-pron{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.15em;color:var(--muted);margin-bottom:22px;animation:fu .8s .06s ease both;display:flex;align-items:center;gap:10px;}
+.h-pron .sl{color:var(--gold);font-size:15px;}
+.h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(70px,10.5vw,164px);line-height:.84;margin-bottom:36px;animation:fu .8s .12s ease both;}
+.h1 .ghost{display:block;color:rgba(245,242,236,0.55);}
+.h-sub{font-size:clamp(17px,1.8vw,21px);font-weight:400;color:var(--white);opacity:.8;max-width:560px;line-height:1.72;margin-bottom:48px;animation:fu .8s .2s ease both;}
+.h-sub strong{color:var(--white);font-weight:600;opacity:1;}
+.h-ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:80px;animation:fu .8s .27s ease both;}
+.h-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border2);animation:fu .8s .34s ease both;}
+.hs{padding:26px 0 0;}
+.hs+.hs{border-left:1px solid var(--border2);padding-left:28px;}
+.hsn{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,3.2vw,50px);color:var(--gold);line-height:1;margin-bottom:5px;}
+.hsl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);line-height:1.55;}
+
+/* PROBLEM */
+#problem{background:var(--off);}
+.prob-split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.prob-label{color:var(--gold);margin-bottom:20px;display:block;}
+.prob-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,5.5vw,86px);line-height:.86;}
+.prob-body{font-size:17px;font-weight:400;color:var(--muted);line-height:1.8;margin-bottom:32px;}
+.prob-body strong{color:var(--white);font-weight:500;}
+.pcards{display:flex;flex-direction:column;gap:2px;}
+.pc{background:var(--card);border-left:2px solid var(--border2);padding:20px 24px;display:flex;align-items:flex-start;gap:18px;transition:border-color .25s;}
+.pc:hover{border-left-color:var(--gold);}
+.pc-n{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold);line-height:1;flex-shrink:0;width:64px;}
+.pc-t{font-size:13px;color:var(--muted);line-height:1.65;}
+.pc-t strong{color:var(--white);display:block;font-size:14px;margin-bottom:3px;}
+
+/* HOW */
+#how{background:var(--black);}
+.how-hd{text-align:center;margin-bottom:80px;}
+.how-hd .label{color:var(--gold);display:block;margin-bottom:16px;}
+.how-hd h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,6vw,92px);line-height:.88;}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+.step{background:var(--card);padding:44px 36px;position:relative;overflow:hidden;}
+.step::before{content:attr(data-n);position:absolute;right:-8px;bottom:-24px;font-family:'Bebas Neue',sans-serif;font-size:120px;color:var(--border);line-height:1;pointer-events:none;transition:color .3s;}
+.step:hover::before{color:var(--border2);}
+.step-icon{width:42px;height:42px;border:1px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;margin-bottom:22px;font-size:17px;}
+.step-title{font-family:'Bebas Neue',sans-serif;font-size:27px;letter-spacing:.02em;margin-bottom:10px;}
+.step-body{font-size:14px;color:var(--muted);line-height:1.75;position:relative;z-index:1;}
+
+/* FEATURES */
+#features{background:var(--off);}
+.feat-hd{margin-bottom:60px;}
+.feat-hd .label{color:var(--gold);display:block;margin-bottom:14px;}
+.feat-hd h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,5.5vw,86px);line-height:.88;}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);}
+.feat{background:var(--card);padding:40px 36px;transition:background .2s;}
+.feat:hover{background:var(--card2);}
+.feat-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;padding:3px 10px;background:var(--gold-dim);color:var(--gold);border:1px solid rgba(201,168,76,.2);margin-bottom:18px;}
+.feat-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:.02em;margin-bottom:10px;}
+.feat-body{font-size:14px;color:var(--muted);line-height:1.75;}
+
+/* ── MOMENT CARD ── */
+.moment-card{background:var(--card);border:1px solid var(--border2);border-top:2px solid var(--gold);max-width:680px;margin:0 auto 32px;overflow:hidden;}
+.moment-top{background:var(--card2);border-bottom:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;}
+.moment-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
+.moment-date{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--muted2);}
+.moment-body{padding:24px 28px;display:flex;flex-direction:column;gap:12px;}
+.moment-item{display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);}
+.moment-item:last-child{border-bottom:none;}
+.moment-icon{font-size:18px;flex-shrink:0;width:32px;text-align:center;}
+.moment-text{font-size:15px;color:var(--white);font-weight:400;}
+.moment-foot{background:var(--off);border-top:1px solid var(--border);padding:16px 28px;display:flex;align-items:center;gap:12px;}
+.moment-stat{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--gold);line-height:1;}
+.moment-stat-text{font-size:13px;color:var(--muted);line-height:1.55;}
+.founder-quote{max-width:680px;margin:0 auto;display:flex;align-items:flex-start;gap:16px;padding:24px;background:var(--black);border:1px solid var(--border);}
+.fq-avatar{width:40px;height:40px;background:var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:var(--black);margin-top:2px;}
+.fq-text{font-size:14px;color:var(--white);font-weight:400;line-height:1.65;margin-bottom:8px;font-style:italic;}
+.fq-name{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.agent-wrap{display:grid;grid-template-columns:200px 1fr;gap:2px;background:var(--border);border:1px solid var(--border2);}
+.agent-sidebar{background:var(--card2);padding:24px 20px;}
+.agent-sidebar-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;display:block;}
+.agent-outputs{display:flex;flex-direction:column;gap:2px;}
+.ao{display:flex;align-items:center;gap:10px;padding:9px 12px;font-size:12px;color:var(--muted);background:var(--black);transition:all .15s;}
+.ao.ao-active,.ao:hover{color:var(--gold);background:var(--gold-glow);}
+.ao-icon{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);width:14px;flex-shrink:0;}
+.agent-chat{background:var(--black);}
+.agent-chat-header{background:var(--card2);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;gap:10px;}
+.ach-dot{width:28px;height:28px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:8px;font-weight:700;color:var(--black);flex-shrink:0;}
+.ach-name{font-size:12px;font-weight:600;color:var(--white);}
+.ach-status{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--green);text-transform:uppercase;}
+.agent-chat-body{padding:20px;display:flex;flex-direction:column;gap:14px;}
+.ac-msg{display:flex;gap:10px;align-items:flex-start;}
+.ac-user{justify-content:flex-end;}
+.ac-dot{width:24px;height:24px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:7px;font-weight:700;color:var(--black);flex-shrink:0;margin-top:2px;}
+.ac-bubble{background:var(--card);border:1px solid var(--border2);padding:12px 16px;font-size:13px;color:var(--muted);line-height:1.7;max-width:90%;}
+.ac-bubble strong{color:var(--white);font-weight:600;}
+.ac-bubble-u{background:var(--gold-glow);border:1px solid var(--gold-dim);padding:10px 16px;font-size:13px;color:var(--white);line-height:1.6;}
+.ac-output{background:var(--off);border:1px solid var(--border2);border-left:2px solid var(--gold);padding:10px 14px;margin-top:8px;}
+.ac-output-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.ac-output-val{font-size:13px;color:var(--white);font-weight:500;line-height:1.5;}
+.ac-path{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--muted);line-height:1.55;}
+.ac-path-n{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);flex-shrink:0;margin-top:1px;}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-bottom:8px;}
+.tl-track{position:absolute;top:28px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.2));z-index:0;}
+.tl-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;position:relative;z-index:1;}
+.tl-node{width:56px;height:56px;border-radius:50%;background:var(--off);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);margin-bottom:20px;flex-shrink:0;}
+.tl-title{font-size:22px;margin-bottom:10px;font-family:'Bebas Neue',sans-serif;letter-spacing:.02em;}
+.tl-body{font-size:13px;color:var(--muted);line-height:1.65;}
+.nil-table{background:var(--card);border:1px solid var(--border2);overflow:hidden;}
+.nil-table-head{display:grid;grid-template-columns:1fr 40px 1fr;background:var(--card2);border-bottom:1px solid var(--border);padding:12px 24px;}
+.nil-th{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;}
+.nil-th-before{color:var(--muted);}
+.nil-th-after{color:var(--gold);}
+.nil-th-arrow{color:var(--gold);text-align:center;font-size:14px;}
+.nil-table-row{display:grid;grid-template-columns:1fr 40px 1fr;padding:14px 24px;border-bottom:1px solid var(--border);align-items:center;transition:background .15s;}
+.nil-table-row:last-child{border-bottom:none;}
+.nil-table-row:hover{background:var(--card2);}
+.nil-td-before{font-size:14px;color:var(--muted);}
+.nil-td-arrow{color:var(--gold);text-align:center;font-size:16px;font-weight:700;}
+.nil-td-after{font-size:13px;color:var(--gold);font-weight:500;}
+.journey-v{display:flex;flex-direction:column;gap:0;max-width:820px;margin:0 auto;}
+.jv-item{display:grid;grid-template-columns:80px 32px 1fr;gap:0;margin-bottom:2px;}
+.jv-left{padding:28px 16px 28px 0;text-align:right;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;}
+.jv-year{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--gold);line-height:1;}
+.jv-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.jv-line{display:flex;flex-direction:column;align-items:center;position:relative;}
+.jv-line::before{content:'';position:absolute;top:0;bottom:0;width:1px;background:var(--border2);}
+.jv-dot{width:12px;height:12px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:34px;position:relative;z-index:1;}
+.jv-right{background:var(--card);border:1px solid var(--border);padding:24px 28px;margin-left:16px;}
+.jv-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.02em;margin-bottom:8px;}
+.jv-body{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:14px;}
+.jv-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.jv-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--border2);color:var(--muted2);}
+.tcards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+.tc{background:var(--card);padding:36px 32px;}
+.tc-quote-mark{font-family:'Bebas Neue',sans-serif;font-size:64px;color:var(--gold);opacity:.25;line-height:1;margin-bottom:4px;}
+.tc-q{font-size:14px;color:var(--muted);line-height:1.78;margin-bottom:24px;}
+.tc-auth{display:flex;align-items:center;gap:12px;}
+.tc-av{width:36px;height:36px;border-radius:50%;background:var(--border2);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);flex-shrink:0;}
+.tc-name{font-size:12px;font-weight:600;color:var(--white);}
+.tc-sport{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);}
+.proof-note{text-align:center;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);}
+.faq-list{display:flex;flex-direction:column;gap:2px;}
+.fi{background:var(--card);}
+.fi-q{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:15px;font-weight:500;color:var(--white);gap:16px;transition:color .2s;}
+.fi-q:hover{color:var(--gold);}
+.fi-icon{font-family:'DM Mono',monospace;font-size:18px;color:var(--gold);flex-shrink:0;transition:transform .25s;}
+.fi-a{display:none;margin:0 24px;padding:0 0 20px;border-top:1px solid var(--border);padding-top:14px;font-size:14px;color:var(--muted);line-height:1.75;}
+.fi.open .fi-a{display:block;}
+.fi.open .fi-icon{transform:rotate(45deg);}
+.fi.open .fi-q{color:var(--gold);}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(201,168,76,.065) 0%,transparent 65%);pointer-events:none;}
+.cta-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(62px,9vw,126px);line-height:.85;margin-bottom:0;}
+.cta-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
+.cta-fine{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);}
+footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--off);}
+.fl{display:flex;align-items:center;gap:14px;}
+.fl img{height:32px;mix-blend-mode:lighten;}
+.fl-tags{display:flex;flex-direction:column;gap:2px;}
+.fl-main{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+.fl-brand{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);}
+.f-links{display:flex;gap:28px;list-style:none;}
+.f-links a{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);text-decoration:none;transition:color .2s;}
+.f-links a:hover{color:var(--gold);}
+.f-copy{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--muted2);}
+@keyframes fu{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.vis{opacity:1;transform:translateY(0);}
+@media(max-width:1024px){
+  nav{padding:0 24px;}.nav-links{display:none;}
+  section{padding:72px 24px !important;}
+  .agent-wrap{grid-template-columns:1fr;}.agent-sidebar{display:none;}
+  .timeline{grid-template-columns:1fr 1fr;}.tl-track{display:none;}
+  .tcards{grid-template-columns:1fr;}
+  .h-stats{grid-template-columns:1fr 1fr;}
+  .cta-btns{flex-direction:column;align-items:stretch;}.cta-btns a{justify-content:center;}
+  footer{flex-direction:column;align-items:flex-start;}
+  .nil-table-row,.nil-table-head{grid-template-columns:1fr 24px 1fr;}
+  .jv-item{grid-template-columns:60px 24px 1fr;}
+}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:var(--border2);}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:var(--border2);}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="nav-logo"><img src="athletiq-logo.png" alt="athletIQ"/></a>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#nil">NIL & Career</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="mailto:hello@athq.tech" class="nav-cta">Get Early Access</a>
+</nav>
+
+
+<!-- HERO -->
+<!-- ═══════ HERO ═══════ -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="orb1"></div><div class="orb2"></div>
+  <div class="hero-vline"></div>
+  <div class="hero-c">
+
+    <div class="h-eye">The Career Readiness Agent for Athletes</div>
+    <div class="h-pron">
+      <span class="sl">/</span> ath · LET · ik <span class="sl">/</span>
+      <span style="color:var(--muted);margin-left:6px;">· Pronounced "athletic." Spelled with intention.</span>
+    </div>
+
+    <h1 class="h1">
+      Built For<br/><span class="gold">The 98%.</span>
+    </h1>
+
+    <p class="h-sub">
+      <strong>Fewer than 2% of athletes go pro.</strong> Nobody built anything for the rest — until now.
+    </p>
+
+    <div class="h-ctas">
+      <a href="mailto:hello@athq.tech" class="btn-gold">Get Early Access — Free →</a>
+      <a href="#moment" class="btn-outline">See The Problem</a>
+    </div>
+
+    <div class="h-stats">
+      <div class="hs"><div class="hsn">&lt;2%</div><div class="hsl">Go pro</div></div>
+      <div class="hs"><div class="hsn">554K</div><div class="hsl">Competing now</div></div>
+      <div class="hs"><div class="hsn">40+</div><div class="hsl">Years in career<br/>after sport</div></div>
+      <div class="hs"><div class="hsn">Day 1</div><div class="hsl">When your<br/>agent starts</div></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════ THE MOMENT ═══════ -->
+<section id="moment" style="padding:100px 48px;background:var(--off);">
+  <div class="inner">
+
+    <div style="text-align:center;margin-bottom:64px;" class="reveal">
+      <div class="label" style="color:var(--gold);display:block;margin-bottom:14px;">The Problem</div>
+      <h2 class="display" style="font-size:clamp(48px,6vw,96px);line-height:.88;margin-bottom:20px;">
+        You Were Ready<br/>For Every Game.<br/><span class="gold">The System Never<br/>Made You Ready<br/>For What Comes After.</span>
+      </h2>
+    </div>
+
+    <!-- THE TUESDAY MORNING CARD -->
+    <div class="moment-card reveal">
+      <div class="moment-top">
+        <div class="moment-label">The Tuesday Morning</div>
+        <div class="moment-date">6 weeks after your last game</div>
+      </div>
+      <div class="moment-body">
+        <div class="moment-item">
+          <div class="moment-icon">📵</div>
+          <div class="moment-text">Your coach hasn't texted in three weeks</div>
+        </div>
+        <div class="moment-item">
+          <div class="moment-icon">📅</div>
+          <div class="moment-text">The schedule that structured your entire life — gone</div>
+        </div>
+        <div class="moment-item">
+          <div class="moment-icon">🏟</div>
+          <div class="moment-text">Your teammates have scattered</div>
+        </div>
+        <div class="moment-item">
+          <div class="moment-icon">💼</div>
+          <div class="moment-text">No LinkedIn. No résumé. No plan.</div>
+        </div>
+        <div class="moment-item">
+          <div class="moment-icon">❓</div>
+          <div class="moment-text">You don't know who you are outside of sport</div>
+        </div>
+      </div>
+      <div class="moment-foot">
+        <span class="moment-stat">26%</span>
+        <span class="moment-stat-text">of elite athletes experience severe mental health crisis at career end &nbsp;·&nbsp; <span style="color:var(--muted2);">IOC, 2023</span></span>
+      </div>
+    </div>
+
+    <!-- FOUNDER QUOTE -->
+    <div class="founder-quote reveal">
+      <div class="fq-avatar">FU</div>
+      <div class="fq-body">
+        <div class="fq-text">"I was that athlete. I played at Huntington College and Jefferson Davis CC, graduated from Alabama State — an HBCU — and walked off the court with no plan. I built athletIQ because that Tuesday morning was real for me."</div>
+        <div class="fq-name">Fred Underwood · Founder, athletIQ · Former College Athlete</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════ THE AGENT ═══════ -->
+<section id="agent" style="padding:100px 48px;background:var(--black);">
+  <div class="inner">
+
+    <div style="text-align:center;margin-bottom:48px;" class="reveal">
+      <div class="label" style="color:var(--gold);display:block;margin-bottom:14px;">The Solution</div>
+      <h2 class="display" style="font-size:clamp(48px,6vw,96px);line-height:.88;">
+        One Agent.<br/><span class="gold">Built For You.</span>
+      </h2>
+      <p style="font-size:17px;color:var(--muted);margin-top:16px;max-width:480px;margin-left:auto;margin-right:auto;">Tell the agent who you are. It builds your professional identity — while you compete.</p>
+    </div>
+
+    <!-- LIVE CHAT -->
+    <div class="agent-wrap reveal">
+      <div class="agent-sidebar">
+        <div class="agent-sidebar-label">Your Agent Produces</div>
+        <div class="agent-outputs">
+          <div class="ao ao-active">
+            <div class="ao-icon">◆</div>
+            <div class="ao-text">LinkedIn Headline</div>
+          </div>
+          <div class="ao">
+            <div class="ao-icon">◎</div>
+            <div class="ao-text">Career Paths</div>
+          </div>
+          <div class="ao">
+            <div class="ao-icon">→</div>
+            <div class="ao-text">Résumé Bullets</div>
+          </div>
+          <div class="ao">
+            <div class="ao-icon">⬡</div>
+            <div class="ao-text">Recruiter Outreach</div>
+          </div>
+          <div class="ao">
+            <div class="ao-icon">◉</div>
+            <div class="ao-text">Skills Translation</div>
+          </div>
+          <div class="ao">
+            <div class="ao-icon">✦</div>
+            <div class="ao-text">Weekly Briefing</div>
+          </div>
+        </div>
+      </div>
+      <div class="agent-chat">
+        <div class="agent-chat-header">
+          <div class="ach-dot">AQ</div>
+          <div>
+            <div class="ach-name">athletIQ Career Agent</div>
+            <div class="ach-status">● Active · Marcus Webb · PG · Alabama State '27</div>
+          </div>
+        </div>
+        <div class="agent-chat-body">
+          <div class="ac-msg ac-agent">
+            <div class="ac-dot">AQ</div>
+            <div class="ac-bubble">Marcus — point guard, sports business interest, graduating 2027. Your LinkedIn headline is ready right now:<br/><br/><div class="ac-output"><div class="ac-output-label">LinkedIn Headline</div><div class="ac-output-val">"D1 Athlete | Sports Business & Brand Strategy | Alabama State '27"</div></div>Your leadership on the court translates directly into brand management. Want your top three career paths — or your full About section first?</div>
+          </div>
+          <div class="ac-msg ac-user">
+            <div class="ac-bubble-u">Career paths first</div>
+          </div>
+          <div class="ac-msg ac-agent">
+            <div class="ac-dot">AQ</div>
+            <div class="ac-bubble"><strong>Your top three — matched to your sport and interests:</strong><br/><br/>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
+              <div class="ac-path"><span class="ac-path-n">01</span><span>Brand Partnerships — your NIL experience translates directly</span></div>
+              <div class="ac-path"><span class="ac-path-n">02</span><span>Sports Operations — your court IQ maps to strategic thinking</span></div>
+              <div class="ac-path"><span class="ac-path-n">03</span><span>Business Development — you negotiate, lead, and perform under pressure</span></div>
+            </div><br/>Start this semester: Google Digital Marketing cert — free, 6 hours, opens doors immediately.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════ HOW IT WORKS ═══════ -->
+<section id="how" style="padding:100px 48px;background:var(--off);">
+  <div class="inner">
+    <div style="text-align:center;margin-bottom:64px;" class="reveal">
+      <div class="label" style="color:var(--gold);display:block;margin-bottom:14px;">How It Works</div>
+      <h2 class="display" style="font-size:clamp(44px,5.5vw,88px);line-height:.88;">Five Minutes In.<br/><span class="gold">Four Years Building.</span></h2>
+    </div>
+
+    <!-- HORIZONTAL TIMELINE -->
+    <div class="timeline reveal">
+      <div class="tl-track"></div>
+      <div class="tl-step">
+        <div class="tl-node">01</div>
+        <div class="tl-icon">◆</div>
+        <div class="tl-title display">Your Blueprint</div>
+        <div class="tl-body">Tell the agent your sport, interests, and goals. Five minutes. Your foundation is set.</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-node">02</div>
+        <div class="tl-icon">◎</div>
+        <div class="tl-title display">Agent Activates</div>
+        <div class="tl-body">LinkedIn headline generated. Career paths surfaced. Skills translated. Immediate output.</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-node">03</div>
+        <div class="tl-icon">⬡</div>
+        <div class="tl-title display">Weekly Briefing</div>
+        <div class="tl-body">Every Sunday — one action that moves you forward. The agent reaches out. You don't have to remember.</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-node">04</div>
+        <div class="tl-icon">✦</div>
+        <div class="tl-title display">You Graduate Ready</div>
+        <div class="tl-body">Four years of compounding career identity. Not a blank page. Not a panic. Momentum.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════ NIL ═══════ -->
+<section id="nil" style="padding:100px 48px;background:var(--black);">
+  <div class="inner">
+    <div style="text-align:center;margin-bottom:56px;" class="reveal">
+      <div class="label" style="color:var(--gold);display:block;margin-bottom:14px;">NIL & Career Capital</div>
+      <h2 class="display" style="font-size:clamp(44px,5.5vw,88px);line-height:.88;">Your Deals Are<br/><span class="gold">Your Résumé.</span></h2>
+      <p style="font-size:16px;color:var(--muted);margin-top:14px;">You're the first generation to earn while you compete. The agent turns every deal into career capital.</p>
+    </div>
+
+    <!-- FLIP TABLE -->
+    <div class="nil-table reveal">
+      <div class="nil-table-head">
+        <div class="nil-th nil-th-before">What You Have</div>
+        <div class="nil-th-arrow">→</div>
+        <div class="nil-th nil-th-after">What The Agent Calls It</div>
+      </div>
+      <div class="nil-table-row">
+        <div class="nil-td-before">Signed a deal with Gatorade</div>
+        <div class="nil-td-arrow">→</div>
+        <div class="nil-td-after">Brand Ambassador · Gatorade · Sports Nutrition</div>
+      </div>
+      <div class="nil-table-row">
+        <div class="nil-td-before">Posted three sponsored videos</div>
+        <div class="nil-td-arrow">→</div>
+        <div class="nil-td-after">Produced 3 sponsored content campaigns · 8K+ reach</div>
+      </div>
+      <div class="nil-table-row">
+        <div class="nil-td-before">Showed up to a brand event</div>
+        <div class="nil-td-arrow">→</div>
+        <div class="nil-td-after">Managed live brand activation · Fortune 500 partner</div>
+      </div>
+      <div class="nil-table-row">
+        <div class="nil-td-before">Local restaurant deal</div>
+        <div class="nil-td-arrow">→</div>
+        <div class="nil-td-after">Brand Partnership · F&B · Regional market</div>
+      </div>
+      <div class="nil-table-row">
+        <div class="nil-td-before">Negotiated your own deal</div>
+        <div class="nil-td-arrow">→</div>
+        <div class="nil-td-after">Self-directed business development · Contract negotiation</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:32px;" class="reveal">
+      <div style="font-size:15px;color:var(--muted);max-width:480px;margin:0 auto;">Every deal you sign is experience in that industry. The agent documents it — automatically — as career capital, not a transaction.</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════ THE JOURNEY ═══════ -->
+<section id="journey" style="padding:100px 48px;background:var(--off);">
+  <div class="inner">
+    <div style="text-align:center;margin-bottom:72px;" class="reveal">
+      <div class="label" style="color:var(--gold);display:block;margin-bottom:14px;">The Athlete Journey</div>
+      <h2 class="display" style="font-size:clamp(44px,5.5vw,88px);line-height:.88;">Four Years.<br/><span class="gold">Built While<br/>You Compete.</span></h2>
+    </div>
+
+    <!-- VERTICAL JOURNEY -->
+    <div class="journey-v">
+
+      <div class="jv-item reveal">
+        <div class="jv-left">
+          <div class="jv-year display">Y1</div>
+          <div class="jv-sub">Freshman</div>
+        </div>
+        <div class="jv-line"><div class="jv-dot"></div></div>
+        <div class="jv-right">
+          <div class="jv-title display">Identity Starts.</div>
+          <div class="jv-body">LinkedIn headline generated on day one. Career paths surfaced. Your sport becomes your professional story before you've played your first college game.</div>
+          <div class="jv-tags">
+            <span class="jv-tag">LinkedIn Generated</span>
+            <span class="jv-tag">Career Paths Mapped</span>
+            <span class="jv-tag">Skills Translated</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="jv-item reveal">
+        <div class="jv-left">
+          <div class="jv-year display">Y2</div>
+          <div class="jv-sub">Sophomore</div>
+        </div>
+        <div class="jv-line"><div class="jv-dot"></div></div>
+        <div class="jv-right">
+          <div class="jv-title display">Direction Sharpens.</div>
+          <div class="jv-body">The agent knows your interests and your NIL activity. Career direction narrows. Recruiter outreach drafted. Network building starts — two years before you need it.</div>
+          <div class="jv-tags">
+            <span class="jv-tag">Recruiter Messages</span>
+            <span class="jv-tag">NIL Documented</span>
+            <span class="jv-tag">Network Growing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="jv-item reveal">
+        <div class="jv-left">
+          <div class="jv-year display">Y3</div>
+          <div class="jv-sub">Junior</div>
+        </div>
+        <div class="jv-line"><div class="jv-dot"></div></div>
+        <div class="jv-right">
+          <div class="jv-title display">Gaps Closed.</div>
+          <div class="jv-body">The agent identifies exactly what's missing between you and your target career — and moves you toward it. Applications drafted. Certifications started. Momentum building.</div>
+          <div class="jv-tags">
+            <span class="jv-tag">Gap Analysis</span>
+            <span class="jv-tag">Applications Drafted</span>
+            <span class="jv-tag">Certifications</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="jv-item reveal">
+        <div class="jv-left">
+          <div class="jv-year display">Y4</div>
+          <div class="jv-sub">Senior</div>
+        </div>
+        <div class="jv-line"><div class="jv-dot"></div></div>
+        <div class="jv-right">
+          <div class="jv-title display">Ready. Not Scrambling.</div>
+          <div class="jv-body">Three years of compounding career identity. LinkedIn complete. Network active. Career targets clear. You graduate with momentum — not a blank page and a panic.</div>
+          <div class="jv-tags">
+            <span class="jv-tag">Profile Complete</span>
+            <span class="jv-tag">Network Active</span>
+            <span class="jv-tag">Ready</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="jv-item reveal">
+        <div class="jv-left" style="opacity:.7;">
+          <div class="jv-year display" style="color:var(--gold);">+</div>
+          <div class="jv-sub">Beyond Sport</div>
+        </div>
+        <div class="jv-line"><div class="jv-dot" style="background:var(--gold);box-shadow:0 0 12px rgba(201,168,76,.4);"></div></div>
+        <div class="jv-right" style="border-top:2px solid var(--gold);">
+          <div class="jv-title display">The Agent Doesn't Stop.</div>
+          <div class="jv-body">The schedule is gone. The team is gone. The agent stays. Career tracking, opportunity surfacing, and network maintenance — through the transition and beyond.</div>
+          <div class="jv-tags">
+            <span class="jv-tag" style="border-color:var(--gold);color:var(--gold);">Post-Sport Support</span>
+            <span class="jv-tag" style="border-color:var(--gold);color:var(--gold);">Continuity</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════ PROOF ═══════ -->
+<section id="proof" style="padding:100px 48px;background:var(--black);">
+  <div class="inner">
+    <div style="text-align:center;margin-bottom:56px;" class="reveal">
+      <div class="label" style="color:var(--gold);display:block;margin-bottom:14px;">Athletes On athletIQ</div>
+      <h2 class="display" style="font-size:clamp(44px,5.5vw,88px);line-height:.88;">Built By An Athlete.<br/><span class="gold">For Every Athlete.</span></h2>
+    </div>
+    <div class="tcards reveal">
+      <div class="tc">
+        <div class="tc-quote-mark">"</div>
+        <p class="tc-q">Within 10 minutes I had a LinkedIn headline and three career paths that actually made sense for me. This is what I needed freshman year — not senior year.</p>
+        <div class="tc-auth"><div class="tc-av">MW</div><div><div class="tc-name">Marcus W.</div><div class="tc-sport">Basketball · Junior · D1 HBCU</div></div></div>
+      </div>
+      <div class="tc">
+        <div class="tc-quote-mark">"</div>
+        <p class="tc-q">It wrote my LinkedIn About section and it actually sounded like me — my event, my leadership role, my training. Recruiters are responding now.</p>
+        <div class="tc-auth"><div class="tc-av">AJ</div><div><div class="tc-name">Aaliyah J.</div><div class="tc-sport">Track & Field · Sophomore · D1</div></div></div>
+      </div>
+      <div class="tc">
+        <div class="tc-quote-mark">"</div>
+        <p class="tc-q">I always felt four years behind everyone else. athletIQ changed that. I have a real plan now — for the first time.</p>
+        <div class="tc-auth"><div class="tc-av">DC</div><div><div class="tc-name">Devon C.</div><div class="tc-sport">Football · Senior · D1</div></div></div>
+      </div>
+    </div>
+    <p class="proof-note" style="margin-top:20px;">Early pilot athletes · Names used with permission</p>
+  </div>
+</section>
+
+
+<!-- ═══════ FAQ ═══════ -->
+<section id="faq" style="padding:80px 48px;background:var(--off);">
+  <div class="inner" style="max-width:720px;">
+    <div style="text-align:center;margin-bottom:48px;" class="reveal">
+      <div class="label" style="color:var(--gold);display:block;margin-bottom:14px;">FAQ</div>
+      <h2 class="display" style="font-size:clamp(40px,5vw,72px);line-height:.9;">Real Questions.<br/><span class="gold">Real Answers.</span></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="fi"><div class="fi-q">Is it free?<span class="fi-icon">+</span></div><div class="fi-a">Yes. Start your Future Blueprint and talk to your agent — completely free. No credit card. No school approval needed.</div></div>
+      <div class="fi"><div class="fi-q">I don't know what career I want. Can it help?<span class="fi-icon">+</span></div><div class="fi-a">That's exactly who it's built for. Tell the agent your interests. It maps the paths. Direction comes from the conversation.</div></div>
+      <div class="fi"><div class="fi-q">I'm a freshman. Is it too early?<span class="fi-icon">+</span></div><div class="fi-a">It's the best time. Four years of compounding career identity beats four weeks of senior year scrambling every time.</div></div>
+      <div class="fi"><div class="fi-q">How is this different from ChatGPT?<span class="fi-icon">+</span></div><div class="fi-a">ChatGPT doesn't know you're a junior point guard at an HBCU interested in sports business. athletIQ does — and carries that context in every response, every week, for your entire career.</div></div>
+      <div class="fi"><div class="fi-q">What does the agent actually produce?<span class="fi-icon">+</span></div><div class="fi-a">LinkedIn headline and About section. Career paths. Résumé bullets. Recruiter messages in your voice. A weekly career briefing every Sunday. All specific to you.</div></div>
+      <div class="fi"><div class="fi-q">Does my school need to sign up?<span class="fi-icon">+</span></div><div class="fi-a">No. Sign up directly today. You own your data. If your school joins later, your profile connects automatically.</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════ CTA ═══════ -->
+<section id="cta" style="padding:140px 48px;background:var(--black);text-align:center;position:relative;overflow:hidden;">
+  <div class="cta-glow"></div>
+  <div style="position:relative;z-index:1;max-width:660px;margin:0 auto;" class="reveal">
+    <div class="label" style="color:var(--gold);display:block;margin-bottom:20px;">Start Today</div>
+    <h2 class="display cta-h2">Don't Wait For<br/>The <span class="gold">Tuesday<br/>Morning.</span></h2>
+    <p style="font-size:17px;color:var(--muted);line-height:1.7;max-width:440px;margin:20px auto 40px;">That day is coming. Build now — while you still have four years to do it right.</p>
+    <div class="cta-btns">
+      <a href="mailto:hello@athq.tech" class="btn-gold">Get Early Access — It's Free →</a>
+      <a href="mailto:hello@athq.tech" class="btn-outline">Talk To The Team</a>
+    </div>
+    <div class="cta-fine" style="margin-top:20px;">Free · Every sport · No credit card · Built for athletes who compete</div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="fl">
+    <img src="athletiq-logo.png" alt="athletIQ"/>
+    <div class="fl-tags">
+      <div class="fl-main">The Career Readiness Agent for College Athletes</div>
+      <div class="fl-brand">Intelligence. Elevation. Legacy.</div>
+    </div>
+  </div>
+  <ul class="f-links">
+    <li><a href="#">Privacy</a></li>
+    <li><a href="#">Terms</a></li>
+    <li><a href="mailto:hello@athq.tech">Contact</a></li>
+  </ul>
+  <div class="f-copy">© 2026 athletIQ, Inc.</div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('.fi-q').forEach(q=>q.addEventListener('click',()=>{const fi=q.parentElement,open=fi.classList.contains('open');document.querySelectorAll('.fi').forEach(i=>i.classList.remove('open'));if(!open)fi.classList.add('open');}));
+</script>
+</body>
+</html>
