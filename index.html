@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>athletIQ — Built for the 98%</title>
+<meta name="description" content="You trained for the game. We build what comes after. athletIQ is the AI-powered career readiness platform built exclusively for student-athletes."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#060606;--off:#0C0C0C;--card:#111111;--card2:#161616;
+  --border:#1F1F1F;--border2:#2C2C2C;
+  --gold:#C9A84C;--gold2:#E2C47A;
+  --gold-dim:rgba(201,168,76,0.15);--gold-glow:rgba(201,168,76,0.07);
+  --white:#F5F2EC;--muted:#B0ABA4;--muted2:#7A7670;--green:#2ECC8A;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+
+/* TYPE */
+.display{font-family:'Bebas Neue',sans-serif;letter-spacing:.02em;line-height:.88;}
+.mono{font-family:'DM Mono',monospace;}
+.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;}
+.gold{color:var(--gold);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(6,6,6,0);border-bottom:1px solid rgba(31,31,31,0);transition:background .4s,border-color .4s;backdrop-filter:blur(0px);transition:all .4s;}
+nav.scrolled{background:rgba(6,6,6,.95);border-bottom-color:var(--border);backdrop-filter:blur(20px);}
+.nav-logo img{height:34px;mix-blend-mode:lighten;display:block;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;background:var(--gold);color:var(--black);padding:10px 22px;border:none;cursor:pointer;text-decoration:none;font-weight:600;transition:background .2s;}
+.nav-cta:hover{background:var(--gold2);}
+
+/* BUTTONS */
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--black);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:16px 36px;border:none;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px);}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--white);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;padding:16px 36px;border:1px solid var(--border2);cursor:pointer;text-decoration:none;transition:all .2s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+/* SECTIONS */
+section{padding:120px 48px;}
+.inner{max-width:1140px;margin:0 auto;}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 80px;position:relative;overflow:hidden;background:var(--black);}
+.orb1{position:absolute;top:-8%;right:-4%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.055) 0%,transparent 65%);animation:orb 14s ease-in-out infinite;pointer-events:none;}
+.orb2{position:absolute;bottom:-18%;left:-8%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.035) 0%,transparent 68%);animation:orb 18s ease-in-out infinite reverse;pointer-events:none;}
+@keyframes orb{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-30px,25px) scale(1.06);}}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 90% 80% at 50% 25%,black 20%,transparent 85%);}
+.hero-vline{position:absolute;top:0;right:160px;width:1px;height:50%;background:linear-gradient(transparent,var(--gold),transparent);opacity:.18;}
+.hero-c{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;}
+.h-eye{display:flex;align-items:center;gap:16px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;animation:fu .8s ease both;}
+.h-eye::before{content:'';display:block;width:40px;height:1px;background:var(--gold);}
+.h-pron{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.15em;color:var(--muted);margin-bottom:22px;animation:fu .8s .06s ease both;display:flex;align-items:center;gap:10px;}
+.h-pron .sl{color:var(--gold);font-size:15px;}
+.h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(70px,10.5vw,164px);line-height:.84;margin-bottom:36px;animation:fu .8s .12s ease both;}
+.h1 .ghost{display:block;color:rgba(245,242,236,0.55);}
+.h-sub{font-size:clamp(17px,1.8vw,21px);font-weight:400;color:var(--white);opacity:.8;max-width:560px;line-height:1.72;margin-bottom:48px;animation:fu .8s .2s ease both;}
+.h-sub strong{color:var(--white);font-weight:600;opacity:1;}
+.h-ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:80px;animation:fu .8s .27s ease both;}
+.h-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border2);animation:fu .8s .34s ease both;}
+.hs{padding:26px 0 0;}
+.hs+.hs{border-left:1px solid var(--border2);padding-left:28px;}
+.hsn{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,3.2vw,50px);color:var(--gold);line-height:1;margin-bottom:5px;}
+.hsl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);line-height:1.55;}
+
+/* PROBLEM */
+#problem{background:var(--off);}
+.prob-split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.prob-label{color:var(--gold);margin-bottom:20px;display:block;}
+.prob-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,5.5vw,86px);line-height:.86;}
+.prob-body{font-size:17px;font-weight:400;color:var(--muted);line-height:1.8;margin-bottom:32px;}
+.prob-body strong{color:var(--white);font-weight:500;}
+.pcards{display:flex;flex-direction:column;gap:2px;}
+.pc{background:var(--card);border-left:2px solid var(--border2);padding:20px 24px;display:flex;align-items:flex-start;gap:18px;transition:border-color .25s;}
+.pc:hover{border-left-color:var(--gold);}
+.pc-n{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold);line-height:1;flex-shrink:0;width:64px;}
+.pc-t{font-size:13px;color:var(--muted);line-height:1.65;}
+.pc-t strong{color:var(--white);display:block;font-size:14px;margin-bottom:3px;}
+
+/* HOW */
+#how{background:var(--black);}
+.how-hd{text-align:center;margin-bottom:80px;}
+.how-hd .label{color:var(--gold);display:block;margin-bottom:16px;}
+.how-hd h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,6vw,92px);line-height:.88;}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+.step{background:var(--card);padding:44px 36px;position:relative;overflow:hidden;}
+.step::before{content:attr(data-n);position:absolute;right:-8px;bottom:-24px;font-family:'Bebas Neue',sans-serif;font-size:120px;color:var(--border);line-height:1;pointer-events:none;transition:color .3s;}
+.step:hover::before{color:var(--border2);}
+.step-icon{width:42px;height:42px;border:1px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;margin-bottom:22px;font-size:17px;}
+.step-title{font-family:'Bebas Neue',sans-serif;font-size:27px;letter-spacing:.02em;margin-bottom:10px;}
+.step-body{font-size:14px;color:var(--muted);line-height:1.75;position:relative;z-index:1;}
+
+/* FEATURES */
+#features{background:var(--off);}
+.feat-hd{margin-bottom:60px;}
+.feat-hd .label{color:var(--gold);display:block;margin-bottom:14px;}
+.feat-hd h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,5.5vw,86px);line-height:.88;}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);}
+.feat{background:var(--card);padding:40px 36px;transition:background .2s;}
+.feat:hover{background:var(--card2);}
+.feat-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;padding:3px 10px;background:var(--gold-dim);color:var(--gold);border:1px solid rgba(201,168,76,.2);margin-bottom:18px;}
+.feat-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:.02em;margin-bottom:10px;}
+.feat-body{font-size:14px;color:var(--muted);line-height:1.75;}
+
+/* NIL SECTION */
+#nil{background:var(--off);}
+.nil-split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-bottom:4px;}
+.nil-card{background:var(--black);border:1px solid var(--border2);overflow:hidden;}
+.nil-card-top{background:var(--card2);border-bottom:1px solid var(--border);padding:14px 20px;}
+.nil-dot{width:28px;height:28px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:8px;font-weight:700;color:var(--black);flex-shrink:0;}
+.nil-dot-sm{width:22px;height:22px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:7px;font-weight:700;color:var(--black);flex-shrink:0;margin-top:2px;}
+.nil-card-body{padding:18px;display:flex;flex-direction:column;gap:12px;}
+.nil-msg{display:flex;gap:9px;align-items:flex-start;}
+.nil-msg-user{justify-content:flex-end;}
+.nil-msg-agent{justify-content:flex-start;}
+.nil-bubble-u{background:var(--gold-glow);border:1px solid var(--gold-dim);padding:11px 15px;font-size:13px;color:var(--white);line-height:1.6;max-width:85%;}
+.nil-bubble-a{background:var(--card);border:1px solid var(--border2);padding:12px 16px;font-size:13px;color:var(--muted);line-height:1.7;max-width:92%;}
+.nil-bubble-a strong{color:var(--white);font-weight:600;}
+.nil-output{background:var(--black);border:1px solid var(--border2);border-left:2px solid var(--gold);padding:10px 14px;margin-top:10px;}
+.nil-output-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.nil-output-val{font-size:12px;color:var(--white);line-height:1.6;}
+.nil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:2px;}
+.nil-truth{background:var(--card);padding:40px 34px;}
+.nil-truth-n{font-size:56px;color:var(--border2);line-height:1;margin-bottom:14px;}
+.nil-truth-title{font-size:26px;letter-spacing:.02em;margin-bottom:12px;}
+.nil-truth-body{font-size:14px;color:var(--muted);line-height:1.75;}
+
+/* TRANSFORMATION */
+#transform{background:var(--black);}
+.trans-hd{text-align:center;margin-bottom:72px;}
+.trans-hd .label{color:var(--gold);display:block;margin-bottom:16px;}
+.trans-hd h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,6vw,92px);line-height:.88;}
+.trans-hd p{font-size:17px;font-weight:400;color:var(--muted);max-width:520px;margin:18px auto 0;line-height:1.7;}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);}
+.ba-b{background:var(--card);padding:48px 40px;}
+.ba-a{background:var(--gold-glow);border-top:2px solid var(--gold);padding:48px 40px;}
+.ba-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:24px;display:block;}
+.ba-b .ba-lbl{color:var(--muted2);}
+.ba-a .ba-lbl{color:var(--gold);}
+.ba-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
+.ba-list li{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.6;}
+.ba-b .ba-list li{color:var(--muted);}
+.ba-a .ba-list li{color:var(--white);}
+.ba-b .ba-list li::before{content:'—';font-family:'DM Mono',monospace;font-size:11px;flex-shrink:0;margin-top:2px;color:var(--muted2);}
+.ba-a .ba-list li::before{content:'→';font-family:'DM Mono',monospace;font-size:11px;flex-shrink:0;margin-top:2px;color:var(--gold);}
+
+/* FUTURE */
+#future{background:var(--off);}
+.fut-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.fut-label{color:var(--gold);display:block;margin-bottom:18px;}
+.fut-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,5.5vw,84px);line-height:.86;margin-bottom:22px;}
+.fut-body{font-size:16px;font-weight:400;color:var(--muted);line-height:1.8;margin-bottom:18px;}
+.fut-body strong{color:var(--white);font-weight:500;}
+.dash-card{background:var(--card);border:1px solid var(--border2);overflow:hidden;}
+.dash-top{background:var(--card2);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;gap:10px;}
+.d-dots{display:flex;gap:6px;}
+.d-dot{width:8px;height:8px;border-radius:50%;}
+.d-dot.r{background:#E05555;}.d-dot.y{background:var(--gold);}.d-dot.g{background:var(--green);}
+.dash-title-bar{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-left:8px;}
+.dash-body{padding:24px;}
+.d-score-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.d-score-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.d-score-sub{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted2);margin-top:2px;}
+.d-score-val{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--gold);line-height:1;}
+.d-bar{background:var(--border);height:3px;margin-bottom:18px;}
+.d-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));width:78%;}
+.d-items{display:flex;flex-direction:column;gap:6px;}
+.d-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--off);font-size:12px;}
+.d-item-l{color:var(--muted);}
+.d-item-v{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;}
+.done{color:var(--green);}.prog{color:var(--gold);}.pend{color:var(--muted2);}
+
+/* PROOF */
+#proof{background:var(--black);}
+.proof-hd{text-align:center;margin-bottom:60px;}
+.proof-hd .label{color:var(--gold);display:block;margin-bottom:14px;}
+.proof-hd h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,5vw,70px);line-height:.9;}
+.tcards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+.tc{background:var(--card);padding:36px 32px;}
+.tc-q{font-size:14px;font-weight:400;color:var(--muted);line-height:1.78;margin-bottom:24px;font-style:italic;}
+.tc-q::before{content:'"';color:var(--gold);font-size:22px;line-height:0;vertical-align:-.35em;margin-right:2px;}
+.tc-auth{display:flex;align-items:center;gap:12px;}
+.tc-av{width:36px;height:36px;border-radius:50%;background:var(--border2);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);flex-shrink:0;}
+.tc-name{font-size:12px;font-weight:600;color:var(--white);}
+.tc-sport{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);}
+.proof-note{text-align:center;margin-top:20px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);}
+
+/* FAQ */
+#faq{background:var(--off);}
+.faq-inner{display:grid;grid-template-columns:1fr 1.65fr;gap:80px;}
+.faq-lbl{color:var(--gold);display:block;margin-bottom:18px;}
+.faq-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(46px,5vw,78px);line-height:.88;}
+.faq-sub{font-size:15px;color:var(--muted);line-height:1.75;margin-top:18px;}
+.faq-list{display:flex;flex-direction:column;gap:2px;}
+.fi{background:var(--card);}
+.fi-q{padding:22px 28px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:15px;font-weight:500;color:var(--white);gap:16px;transition:color .2s;}
+.fi-q:hover{color:var(--gold);}
+.fi-icon{font-family:'DM Mono',monospace;font-size:18px;color:var(--gold);flex-shrink:0;transition:transform .25s;}
+.fi-a{display:none;margin:0 28px;padding:0 0 22px;border-top:1px solid var(--border);padding-top:16px;font-size:14px;color:var(--muted);line-height:1.75;}
+.fi.open .fi-a{display:block;}
+.fi.open .fi-icon{transform:rotate(45deg);}
+.fi.open .fi-q{color:var(--gold);}
+
+/* CTA */
+#cta{background:var(--black);text-align:center;padding:160px 48px;position:relative;overflow:hidden;}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(201,168,76,.065) 0%,transparent 65%);pointer-events:none;}
+.cta-inner{position:relative;z-index:1;max-width:720px;margin:0 auto;}
+.cta-lbl{color:var(--gold);display:block;margin-bottom:20px;}
+.cta-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(62px,9vw,126px);line-height:.85;margin-bottom:28px;}
+.cta-sub{font-size:18px;font-weight:400;color:var(--muted);line-height:1.7;max-width:460px;margin:0 auto 48px;}
+.cta-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:24px;}
+.cta-fine{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--off);}
+.fl{display:flex;align-items:center;gap:14px;}
+.fl img{height:32px;mix-blend-mode:lighten;}
+.fl-tags{display:flex;flex-direction:column;gap:2px;}
+.fl-main{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+.fl-brand{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);}
+.f-links{display:flex;gap:28px;list-style:none;}
+.f-links a{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);text-decoration:none;transition:color .2s;}
+.f-links a:hover{color:var(--gold);}
+.f-copy{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--muted2);}
+
+/* ANIMATIONS */
+@keyframes fu{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.vis{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:0 24px;}.nav-links{display:none;}
+  section{padding:80px 24px;}
+  #hero{padding:0 24px 60px;}
+  .prob-split,.fut-inner,.faq-inner,.nil-split,#why-ai .inner>div{grid-template-columns:1fr;}
+  .steps,.tcards,.nil-grid{grid-template-columns:1fr;}
+  .feat-grid,.ba{grid-template-columns:1fr;}
+  .h-stats{grid-template-columns:1fr 1fr;}
+  #cta{padding:100px 24px;}
+  footer{flex-direction:column;align-items:flex-start;}
+}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:var(--border2);}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="nav-logo"><img src="athletiq-logo.png" alt="athletIQ"/></a>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#nil">NIL & Career</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="mailto:hello@athq.tech" class="nav-cta">Get Early Access</a>
+</nav>
+
+
+<!-- HERO -->
+<!-- ═══════════════════════
+     HERO
+═══════════════════════ -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="orb1"></div><div class="orb2"></div>
+  <div class="hero-vline"></div>
+  <div class="hero-c">
+
+    <div class="h-eye">The Career Readiness Agent for Athletes</div>
+    <div class="h-pron">
+      <span class="sl">/</span> ath · LET · ik <span class="sl">/</span>
+      <span style="color:var(--muted);margin-left:6px;">· Pronounced "athletic." Spelled with intention.</span>
+    </div>
+
+    <h1 class="h1">
+      You Trained<br/>For The Game.<br/>
+      <span class="ghost">We Build<br/>What Comes After.</span>
+    </h1>
+
+    <p class="h-sub">
+      <strong>Sport ends on a specific day. Most athletes aren't ready for it.</strong> athletIQ is the AI-powered career agent built exclusively for student-athletes — so you build your future while you're still competing, not after it's over.
+    </p>
+
+    <div class="h-ctas">
+      <a href="mailto:hello@athq.tech" class="btn-gold">Get Early Access →</a>
+      <a href="#problem" class="btn-outline">See Why It Matters</a>
+    </div>
+
+    <div class="h-stats">
+      <div class="hs"><div class="hsn">&lt;2%</div><div class="hsl">Ever reach a<br/>pro league</div></div>
+      <div class="hs"><div class="hsn">554K</div><div class="hsl">Athletes competing<br/>right now</div></div>
+      <div class="hs"><div class="hsn">40+</div><div class="hsl">Years in the career<br/>that follows sport</div></div>
+      <div class="hs"><div class="hsn">Day 1</div><div class="hsl">When your agent<br/>activates</div></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════
+     THE PROBLEM
+═══════════════════════ -->
+<section id="problem">
+  <div class="inner">
+    <div class="prob-split">
+
+      <div class="reveal">
+        <span class="label prob-label">The Problem</span>
+        <h2 class="prob-h2 display">
+          You Were<br/>Ready For<br/>Every Game.<br/>
+          <span class="gold">The System<br/>Never Made<br/>You Ready<br/>For What<br/>Comes After.</span>
+        </h2>
+      </div>
+
+      <div class="reveal">
+        <p class="prob-body">There is a Tuesday morning coming. Six weeks after your last game — no schedule, no team, no coach texting. The structure that defined your entire life is gone. <strong style="color:var(--white);font-weight:600;">Nobody prepared you for that day.</strong></p>
+        <p class="prob-body">The same institution that owned your schedule, sold your jersey, and built their brand on your performance had one staff member responsible for the career development of hundreds of athletes. That was never going to be enough — and they knew it.</p>
+
+        <div class="pcards">
+          <div class="pc">
+            <div class="pc-n">&lt;2%</div>
+            <div class="pc-t"><strong>Ever reach a major professional league</strong>The other 98% spend 40+ years in careers nobody helped them build — while they were giving everything to the sport.</div>
+          </div>
+          <div class="pc">
+            <div class="pc-n">26%</div>
+            <div class="pc-t"><strong>Severe mental health crisis at career end</strong>Not weakness. What happens when your identity disappears on a specific day and nothing was built to replace it.</div>
+          </div>
+          <div class="pc">
+            <div class="pc-n">Y4</div>
+            <div class="pc-t"><strong>When most athletes first seriously think about their career</strong>Senior year panic. Four years of opportunity gone. athletIQ starts on day one — not the day before graduation.</div>
+          </div>
+        </div>
+
+        <!-- FOUNDER -->
+        <div style="margin-top:24px;border-top:1px solid var(--border2);padding-top:24px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:36px;height:36px;background:var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:var(--black);margin-top:2px;">FU</div>
+          <div>
+            <div style="font-size:14px;color:var(--white);font-weight:500;line-height:1.65;margin-bottom:5px;">"I was that athlete. I played at Huntington College and Jefferson Davis CC, graduated from Alabama State, and walked off the court with no plan, no network, and no professional identity. I built athletIQ because that Tuesday morning was real for me — and it doesn't have to be real for you."</div>
+            <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Fred Underwood · Founder, athletIQ · Former College Athlete · Alabama State University (HBCU)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════
+     WHY AI
+═══════════════════════ -->
+<section id="why-ai" style="padding:80px 48px;background:var(--card);">
+  <div class="inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+
+      <div class="reveal">
+        <span class="label" style="color:var(--gold);display:block;margin-bottom:16px;">Why Now</span>
+        <h2 class="display" style="font-size:clamp(44px,5vw,78px);line-height:.88;margin-bottom:20px;">This Problem<br/>Was Always<br/>Unsolvable.<br/><span class="gold">Until Now.</span></h2>
+        <p style="font-size:16px;color:var(--muted);line-height:1.75;">One counselor cannot give 400 athletes the personalized, ongoing career guidance they need. The ratio makes it impossible. <strong style="color:var(--white);font-weight:500;">AI removes the ratio entirely.</strong> The same depth of guidance available to one athlete is now available to every athlete — simultaneously, from day one.</p>
+      </div>
+
+      <div class="reveal">
+        <div style="display:flex;flex-direction:column;gap:2px;background:var(--border);">
+          <div style="background:var(--black);padding:20px 24px;display:flex;gap:16px;align-items:flex-start;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--border2);line-height:1;width:36px;flex-shrink:0;">01</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:3px;">No ratio constraint.</div>
+              <div style="font-size:13px;color:var(--muted);line-height:1.65;">Every athlete gets personalized guidance — simultaneously, continuously, from the first day of enrollment.</div>
+            </div>
+          </div>
+          <div style="background:var(--black);padding:20px 24px;display:flex;gap:16px;align-items:flex-start;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--border2);line-height:1;width:36px;flex-shrink:0;">02</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:3px;">It knows you — and remembers.</div>
+              <div style="font-size:13px;color:var(--muted);line-height:1.65;">Your sport. Your interests. Your goals. Four years of context, carried forward in every conversation. No starting over.</div>
+            </div>
+          </div>
+          <div style="background:var(--black);padding:20px 24px;display:flex;gap:16px;align-items:flex-start;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--border2);line-height:1;width:36px;flex-shrink:0;">03</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:3px;">It comes to you — you don't have to go to it.</div>
+              <div style="font-size:13px;color:var(--muted);line-height:1.65;">Every Sunday, your agent shows up with one action. You don't have to remember to think about your career. It won't let you forget.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════
+     HOW IT WORKS
+═══════════════════════ -->
+<section id="how">
+  <div class="inner">
+    <div class="how-hd reveal">
+      <span class="label">How It Works</span>
+      <h2 class="display">Five Minutes<br/>To Start.<br/><span class="gold">Four Years<br/>To Build.</span></h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step" data-n="01">
+        <div class="step-icon">◆</div>
+        <div class="step-title display">Tell The Agent Who You Are</div>
+        <div class="step-body">Your sport. Your position. What you're interested in. Where you want to go. Five minutes. The agent uses this as the foundation for everything it builds — starting immediately.</div>
+      </div>
+      <div class="step" data-n="02">
+        <div class="step-icon">◎</div>
+        <div class="step-title display">The Agent Goes To Work</div>
+        <div class="step-body">Before you ask. LinkedIn headline ready. Career paths matched to your sport. Your athletic skills named in the language employers hire for. The first draft of your professional identity — done.</div>
+      </div>
+      <div class="step" data-n="03">
+        <div class="step-icon">⬡</div>
+        <div class="step-title display">It Keeps Building — Every Week</div>
+        <div class="step-body">Every Sunday, one action that moves you forward. Every conversation builds on the last. By graduation, you have four years of compounding career identity — not a blank page and a panic.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════
+     WHAT THE AGENT DOES
+═══════════════════════ -->
+<section id="features">
+  <div class="inner">
+    <div class="feat-hd reveal">
+      <span class="label">What The Agent Does For You</span>
+      <h2 class="display">Your Career.<br/>Built While<br/><span class="gold">You Compete.</span></h2>
+    </div>
+    <div class="feat-grid reveal">
+
+      <div class="feat">
+        <div class="feat-tag">LinkedIn & Brand</div>
+        <div class="feat-title display">You Have A<br/>Professional Story.<br/>Let's Tell It.</div>
+        <div class="feat-body">Your LinkedIn headline, About section, and bio — written from your sport, your position, and where you want to go. Ready to publish. Sounds like you. Not a template.</div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-tag">Career Direction</div>
+        <div class="feat-title display">You Don't Need<br/>A Plan. You Need<br/>A Starting Point.</div>
+        <div class="feat-body">The agent maps career paths to your sport and interests — and names the first step. Certifications. Internships. Recruiters worth reaching. Direction before you have to ask for it.</div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-tag">Recruiter Outreach</div>
+        <div class="feat-title display">Know Who<br/>To Contact.<br/>Know What To Say.</div>
+        <div class="feat-body">The agent identifies recruiters in your target field, drafts your LinkedIn message in your voice, and writes your follow-up. You review. You send. You get responses.</div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-tag">Skills Translation</div>
+        <div class="feat-title display">Everything Sport<br/>Taught You Is<br/>Worth Something.</div>
+        <div class="feat-body">Leadership. Performance under pressure. Discipline. Coachability. The agent names what you built in sport — in the professional language that gets you hired.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════
+     NIL AS CAREER CAPITAL
+═══════════════════════ -->
+<section id="nil">
+  <div class="inner">
+    <div class="nil-split">
+
+      <div class="reveal">
+        <span class="label" style="color:var(--gold);display:block;margin-bottom:20px;">NIL & Career Capital</span>
+        <h2 class="display" style="font-size:clamp(50px,5.5vw,86px);line-height:.88;margin-bottom:24px;">
+          Your Deals<br/>Aren't Just<br/>Income.<br/>
+          <span class="gold">They're Your<br/>Résumé.</span>
+        </h2>
+        <p style="font-size:17px;font-weight:400;color:var(--muted);line-height:1.8;margin-bottom:24px;">You are the first generation of athletes who build their professional brand while they compete. Every NIL deal you sign is experience in that industry. <strong style="color:var(--white);font-weight:500;">The agent turns what you're already doing into career capital.</strong></p>
+        <div style="background:var(--card);border-left:2px solid var(--gold);padding:20px 24px;">
+          <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">The Reframe</div>
+          <div style="font-size:15px;color:var(--white);font-weight:500;line-height:1.7;">"I signed a deal with Jordan Brand"<br/>becomes<br/><span style="color:var(--gold);">"Brand Partnership Manager · Apparel · Jordan Brand"</span></div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Live — Agent Translating NIL Into Career Capital</div>
+        <div class="nil-card">
+          <div class="nil-card-top">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div class="nil-dot">AQ</div>
+              <div>
+                <div style="font-size:12px;font-weight:600;color:var(--white);">athletIQ Career Agent</div>
+                <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--green);text-transform:uppercase;">● Active</div>
+              </div>
+            </div>
+          </div>
+          <div class="nil-card-body">
+            <div class="nil-msg nil-msg-user">
+              <div class="nil-bubble-u">I just signed with Gatorade. $2K for three posts and a campus event.</div>
+            </div>
+            <div class="nil-msg nil-msg-agent">
+              <div class="nil-dot-sm">AQ</div>
+              <div class="nil-bubble-a">That's not just $2K — that's brand partnership experience. Here's how it goes on your profile right now:<br/><br/>
+                <div class="nil-output"><div class="nil-output-label">LinkedIn Position</div><div class="nil-output-val">Brand Ambassador · Gatorade · 2024–Present<br/>Managed sponsored content campaigns and live brand activations for a Fortune 500 sports nutrition company.</div></div>
+                <div class="nil-output" style="margin-top:8px;"><div class="nil-output-label">Résumé Bullet</div><div class="nil-output-val">Negotiated and executed $2K brand partnership · 3 sponsored content campaigns + 1 campus event reaching 8K+ followers.</div></div>
+              </div>
+            </div>
+            <div class="nil-msg nil-msg-user">
+              <div class="nil-bubble-u">I also have a deal with a local restaurant and a sports equipment brand.</div>
+            </div>
+            <div class="nil-msg nil-msg-agent">
+              <div class="nil-dot-sm">AQ</div>
+              <div class="nil-bubble-a"><strong>You're already a brand manager with a multi-category portfolio.</strong> Here's your updated headline:<br/><br/><span style="color:var(--gold);font-weight:600;">"D1 Athlete | Brand Partnership Management | Gatorade · Local Eats · Pro Edge | Alabama State '27"</span><br/><br/>That positions you for sports marketing, brand management, and business development — backed by deals you've already executed.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="nil-grid reveal">
+      <div class="nil-truth">
+        <div class="nil-truth-n display">01</div>
+        <div class="nil-truth-title display">Every Deal Is<br/>A Portfolio Entry.</div>
+        <div class="nil-truth-body">Every brand you partner with is experience in that industry. The agent documents it as career capital — not a transaction.</div>
+      </div>
+      <div class="nil-truth">
+        <div class="nil-truth-n display">02</div>
+        <div class="nil-truth-title display">Every Campaign Is<br/>A Marketing Project.</div>
+        <div class="nil-truth-body">You created the content, hit the deadline, drove the results. That's documented marketing experience — translated into language hiring managers recognize.</div>
+      </div>
+      <div class="nil-truth">
+        <div class="nil-truth-n display">03</div>
+        <div class="nil-truth-title display">Every Partnership Is<br/>Business Experience.</div>
+        <div class="nil-truth-body">You negotiated, delivered, and managed a brand relationship. Most people your age don't have that. Most don't know how to say it. The agent does.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════
+     TRANSFORMATION
+═══════════════════════ -->
+<section id="transform">
+  <div class="inner">
+    <div class="trans-hd reveal">
+      <span class="label">The Difference</span>
+      <h2 class="display">Two Athletes.<br/>Same Sport.<br/><span class="gold">Different Ending.</span></h2>
+      <p style="font-size:17px;font-weight:400;color:var(--muted);line-height:1.75;max-width:520px;margin:18px auto 0;">One started building during the season. One waited until after. Four years makes all the difference.</p>
+    </div>
+    <div class="ba reveal">
+      <div class="ba-b">
+        <span class="ba-lbl">Without athletIQ</span>
+        <ul class="ba-list">
+          <li>Graduation arrives with a blank LinkedIn page</li>
+          <li>Nobody ever explained how your sport experience translates professionally</li>
+          <li>Senior year is the first time you seriously think about your career</li>
+          <li>You feel behind every non-athlete peer — because you are</li>
+          <li>Your professional network is your teammates — not the industry you want</li>
+          <li>The uniform comes off and you don't know who you are outside of it</li>
+        </ul>
+      </div>
+      <div class="ba-a">
+        <span class="ba-lbl">With athletIQ</span>
+        <ul class="ba-list">
+          <li>LinkedIn built from day one — on your sport and your goals</li>
+          <li>Your athletic skills named in professional language from the start</li>
+          <li>Career direction established sophomore year — not senior year</li>
+          <li>You know what you're doing before anyone asks</li>
+          <li>Network built strategically — the right people in the right industries</li>
+          <li>You graduate with momentum, clarity, and a professional identity that was built — not improvised</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════
+     CAREER READINESS SCORE
+═══════════════════════ -->
+<section id="future">
+  <div class="inner">
+    <div class="fut-inner">
+
+      <div class="reveal">
+        <span class="label fut-label">Your Career Readiness Score</span>
+        <h2 class="fut-h2 display">Always Know<br/>Where You<br/>Stand.</h2>
+        <p class="fut-body">Your Career Readiness Score tracks exactly where you are — LinkedIn, career direction, networking, certifications. <strong>Not a grade. A compass.</strong></p>
+        <p class="fut-body">Every Sunday the agent shows up with the one action that moves you forward. You don't have to figure out what to do next. It already knows.</p>
+        <a href="mailto:hello@athq.tech" class="btn-gold" style="margin-top:16px;">Get Early Access →</a>
+      </div>
+
+      <div class="reveal">
+        <div class="dash-card">
+          <div class="dash-top">
+            <div class="d-dots"><div class="d-dot r"></div><div class="d-dot y"></div><div class="d-dot g"></div></div>
+            <div class="dash-title-bar">athletIQ — Career Readiness</div>
+          </div>
+          <div class="dash-body">
+            <div class="d-score-row">
+              <div><div class="d-score-lbl">Your Readiness Score</div><div class="d-score-sub">Marcus Webb · Basketball · Junior</div></div>
+              <div class="d-score-val">78</div>
+            </div>
+            <div class="d-bar"><div class="d-bar-fill"></div></div>
+            <div class="d-items">
+              <div class="d-item"><span class="d-item-l">LinkedIn Headline</span><span class="d-item-v done">✓ Published</span></div>
+              <div class="d-item"><span class="d-item-l">Career Path Identified</span><span class="d-item-v done">✓ Brand Management</span></div>
+              <div class="d-item"><span class="d-item-l">LinkedIn About Section</span><span class="d-item-v prog">→ In Progress</span></div>
+              <div class="d-item"><span class="d-item-l">Google Digital Marketing Cert</span><span class="d-item-v prog">→ Started</span></div>
+              <div class="d-item"><span class="d-item-l">First Recruiter Message Sent</span><span class="d-item-v pend">○ This Week's Action</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════
+     SOCIAL PROOF
+═══════════════════════ -->
+<section id="proof">
+  <div class="inner">
+    <div class="proof-hd reveal">
+      <span class="label">Athletes On athletIQ</span>
+      <h2 class="display">Built By An Athlete.<br/><span class="gold">For Every Athlete.</span></h2>
+    </div>
+    <div class="tcards reveal">
+
+      <div class="tc">
+        <p class="tc-q">I had no idea what to do after basketball. Within 10 minutes I had a LinkedIn headline that actually sounded like me and three career paths I'd never considered. This is what I needed freshman year — not senior year.</p>
+        <div class="tc-auth">
+          <div class="tc-av">MW</div>
+          <div><div class="tc-name">Marcus W.</div><div class="tc-sport">Basketball · Junior · D1 HBCU</div></div>
+        </div>
+      </div>
+
+      <div class="tc">
+        <p class="tc-q">The agent wrote my LinkedIn About section and it actually sounded like me — not some generic template. It referenced my event, my leadership role, my training. Recruiters have started reaching out.</p>
+        <div class="tc-auth">
+          <div class="tc-av">AJ</div>
+          <div><div class="tc-name">Aaliyah J.</div><div class="tc-sport">Track & Field · Sophomore · D1</div></div>
+        </div>
+      </div>
+
+      <div class="tc">
+        <p class="tc-q">I always felt behind everyone else when it came to careers. Like they had a four-year head start I never got. athletIQ gave me a plan — and for the first time I actually feel like I'm on track.</p>
+        <div class="tc-auth">
+          <div class="tc-av">DC</div>
+          <div><div class="tc-name">Devon C.</div><div class="tc-sport">Football · Senior · D1</div></div>
+        </div>
+      </div>
+
+    </div>
+    <p class="proof-note">Early pilot athletes · Testimonials reflect real conversations · Names used with permission</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════
+     FAQ
+═══════════════════════ -->
+<section id="faq">
+  <div class="inner">
+    <div class="faq-inner">
+
+      <div class="reveal">
+        <span class="label faq-lbl">FAQ</span>
+        <h2 class="faq-h2 display">Real Talk.<br/>Real Answers.</h2>
+        <p class="faq-sub">Still have questions? Email us at hello@athq.tech — a real person responds.</p>
+      </div>
+
+      <div class="faq-list reveal">
+        <div class="fi">
+          <div class="fi-q">Is athletIQ actually free?<span class="fi-icon">+</span></div>
+          <div class="fi-a">Yes. Create your Future Blueprint and start talking to your Career Readiness Agent — completely free. No credit card. No trial period. No school approval needed.</div>
+        </div>
+        <div class="fi">
+          <div class="fi-q">I don't know what career I want. Can it still help?<span class="fi-icon">+</span></div>
+          <div class="fi-a">This is exactly who it's built for. You don't need a plan — you need a starting point. Tell the agent your interests and what you've enjoyed. It maps the paths. You explore. Direction comes from the conversation, not from you already knowing the answer.</div>
+        </div>
+        <div class="fi">
+          <div class="fi-q">I'm only a freshman. Is it too early?<span class="fi-icon">+</span></div>
+          <div class="fi-a">It's the best time. Four years of compounding career identity is worth more than four weeks of senior year scrambling. The earlier the agent knows you, the more it builds — automatically, in the background, while you compete.</div>
+        </div>
+        <div class="fi">
+          <div class="fi-q">What sport do I need to play?<span class="fi-icon">+</span></div>
+          <div class="fi-a">Any sport. Basketball, football, track, volleyball, soccer, swimming, golf — the agent personalizes to your specific sport, position, and schedule. If you compete, this was built for you.</div>
+        </div>
+        <div class="fi">
+          <div class="fi-q">How is this different from ChatGPT?<span class="fi-icon">+</span></div>
+          <div class="fi-a">ChatGPT doesn't know you're a junior point guard at an HBCU interested in sports business and brand management. athletIQ does — because you told it, and it carries that context in every response, every week, for your entire career. Generic AI gives generic answers. athletIQ gives yours.</div>
+        </div>
+        <div class="fi">
+          <div class="fi-q">What does the agent actually produce?<span class="fi-icon">+</span></div>
+          <div class="fi-a">Your LinkedIn headline and full About section. Career paths mapped to your sport and interests. Résumé bullets built from your athletic experience. Recruiter messages drafted in your voice. A weekly career briefing every Sunday. All of it specific to you — not a template with your name swapped in.</div>
+        </div>
+        <div class="fi">
+          <div class="fi-q">Does my school need to be involved?<span class="fi-icon">+</span></div>
+          <div class="fi-a">No. Sign up directly as an athlete today. If your school joins later, your profile connects to their dashboard automatically. You own your data either way.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════
+     FINAL CTA
+═══════════════════════ -->
+<section id="cta">
+  <div class="cta-glow"></div>
+  <div class="cta-inner reveal">
+    <span class="label cta-lbl">Start Today</span>
+    <h2 class="cta-h2 display">Don't Wait<br/>For The<br/><span class="gold">Tuesday<br/>Morning.</span></h2>
+    <p class="cta-sub">That day is coming. The question is whether you'll be ready — or whether you'll spend the next two years figuring out what everyone else built while they were still competing.</p>
+    <div class="cta-btns">
+      <a href="mailto:hello@athq.tech" class="btn-gold">Get Early Access — It's Free →</a>
+      <a href="mailto:hello@athq.tech" class="btn-outline">Talk To The Team</a>
+    </div>
+    <div class="cta-fine">Free to start · No credit card · Every sport · Built for athletes who compete</div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="fl">
+    <img src="athletiq-logo.png" alt="athletIQ"/>
+    <div class="fl-tags">
+      <div class="fl-main">The Career Readiness Agent for College Athletes</div>
+      <div class="fl-brand">Intelligence. Elevation. Legacy.</div>
+    </div>
+  </div>
+  <ul class="f-links">
+    <li><a href="#">Privacy</a></li>
+    <li><a href="#">Terms</a></li>
+    <li><a href="mailto:hello@athq.tech">Contact</a></li>
+  </ul>
+  <div class="f-copy">© 2026 athletIQ, Inc.</div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('.fi-q').forEach(q=>q.addEventListener('click',()=>{const fi=q.parentElement,open=fi.classList.contains('open');document.querySelectorAll('.fi').forEach(i=>i.classList.remove('open'));if(!open)fi.classList.add('open');}));
+</script>
+</body>
+</html>
