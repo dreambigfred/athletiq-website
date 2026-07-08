@@ -125,7 +125,6 @@
     }
     .dash-card .value .highlight-num { color: var(--gold); }
 
-    /* Card variants */
     .dash-card.highlight {
       border-color: var(--gold-dim);
       background: rgba(201,168,76,0.04);
@@ -152,7 +151,6 @@
     }
     .dash-card .progress-fill.animated { width: 72%; }
 
-    /* Season path steps */
     .season-steps {
       display: flex;
       flex-direction: column;
@@ -184,7 +182,6 @@
       background: var(--gold);
       box-shadow: 0 0 12px rgba(201,168,76,0.25);
     }
-    .season-step .step-label { font-weight: 300; }
     .season-step .step-status {
       margin-left: auto;
       font-family: 'DM Mono', monospace;
@@ -193,7 +190,6 @@
       letter-spacing: 0.06em;
     }
 
-    /* Momentum counter */
     .momentum-display {
       display: flex;
       align-items: baseline;
@@ -211,7 +207,6 @@
       text-align: right;
     }
 
-    /* Outcomes strip */
     .outcomes-strip {
       grid-column: span 2;
       display: flex;
@@ -242,6 +237,46 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
+    }
+
+    /* Slanted dashboard image */
+    .dashboard-image-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 65%;
+      overflow: visible;
+      margin: 8px 0;
+    }
+    .dashboard-image-wrapper img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      transform: rotate(-2.5deg) scale(1.02);
+      transition: transform 0.6s ease;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px var(--border);
+      border: 1px solid var(--border);
+    }
+    .dashboard-image-wrapper:hover img {
+      transform: rotate(0deg) scale(1);
+    }
+    .dashboard-image-wrapper .dummy-badge {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      background: var(--black);
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--gold-dim);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      z-index: 2;
+      backdrop-filter: blur(4px);
     }
 
     /* ── 3. BUILT FOR THE 98% ── */
@@ -300,6 +335,43 @@
     .founder-meta { margin-top: 24px; font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; color: var(--muted); line-height: 1.8; }
     .founder-meta .highlight { color: var(--gold); }
 
+    /* Founder dummy photo */
+    .founder-photo {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background: var(--black3);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      position: relative;
+      overflow: hidden;
+    }
+    .founder-photo .dummy-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--gold-glow);
+      border: 2px solid var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .founder-photo .dummy-label {
+      font-size: 0.65rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.08em;
+    }
+
     /* ── 9. FINAL CTA ── */
     #final-cta { text-align: center; padding: 120px 0; border-bottom: none; }
     .final-headline { font-size: clamp(44px, 6vw, 80px); margin-bottom: 16px; }
@@ -324,6 +396,7 @@
       .nav-links { display: none; }
       .dashboard { grid-template-columns: 1fr; }
       .outcomes-strip { grid-column: span 1; }
+      .dashboard-image-wrapper img { transform: rotate(-1.5deg) scale(1.02); }
     }
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
@@ -332,6 +405,7 @@
       .dash-card .progress-fill.animated { width: 72%; }
       .season-step.visible { opacity: 1; }
       .outcome-icon.visible { opacity: 1; }
+      .dashboard-image-wrapper img { transform: rotate(0deg); }
     }
   </style>
 </head>
@@ -367,7 +441,7 @@
   </div>
 </section>
 
-<!-- 2. PRODUCT PREVIEW — with scroll animations -->
+<!-- 2. PRODUCT PREVIEW — with scroll animations and slanted dashboard image -->
 <section id="product">
   <div class="container">
     <p class="eyebrow">Meet Your Career Coach</p>
@@ -376,6 +450,13 @@
       <div>
         <p class="section-sub" style="max-width:100%;">AthletIQ creates a personalized coaching experience that grows with you every week.</p>
         <div class="product-support">Real dashboard — no generic AI graphics. Your career readiness, weekly plan, and momentum, all in one place.</div>
+        <!-- Slanted dashboard dummy image -->
+        <div class="dashboard-image-wrapper">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%230e0e0e'/%3E%3Crect x='20' y='20' width='260' height='120' rx='6' fill='%23161616' stroke='%23C9A84C' stroke-opacity='0.2' stroke-width='1'/%3E%3Ctext x='40' y='55' font-family='monospace' font-size='11' fill='%238a6e2f' letter-spacing='1'%3ECAREER READINESS SCORE%3C/text%3E%3Ctext x='40' y='85' font-family='sans-serif' font-size='20' fill='%23f0ece3' font-weight='500'%3E84 · Ahead of 72% of peers%3C/text%3E%3Crect x='300' y='20' width='260' height='120' rx='6' fill='%23161616' stroke='%23C9A84C' stroke-opacity='0.2' stroke-width='1'/%3E%3Ctext x='320' y='55' font-family='monospace' font-size='11' fill='%238a6e2f' letter-spacing='1'%3EWEEKLY CAREER GAME PLAN%3C/text%3E%3Ctext x='320' y='85' font-family='sans-serif' font-size='16' fill='%23f0ece3'%3E3 actions · 18 min this week%3C/text%3E%3Crect x='320' y='100' width='220' height='4' rx='2' fill='%23161616'/%3E%3Crect x='320' y='100' width='158' height='4' rx='2' fill='%23C9A84C'/%3E%3Crect x='20' y='155' width='260' height='100' rx='6' fill='%23161616' stroke='%23C9A84C' stroke-opacity='0.2' stroke-width='1'/%3E%3Ctext x='40' y='185' font-family='monospace' font-size='11' fill='%238a6e2f' letter-spacing='1'%3ESEASON PATH%3C/text%3E%3Ccircle cx='50' cy='210' r='4' fill='%23C9A84C'/%3E%3Ctext x='62' y='215' font-family='sans-serif' font-size='13' fill='%23f0ece3'%3EFreshman%3C/text%3E%3Ctext x='230' y='215' font-family='monospace' font-size='9' fill='%238a6e2f'%3E✓%3C/text%3E%3Ccircle cx='50' cy='230' r='4' fill='%23C9A84C'/%3E%3Ctext x='62' y='235' font-family='sans-serif' font-size='13' fill='%23f0ece3'%3ESophomore%3C/text%3E%3Ctext x='230' y='235' font-family='monospace' font-size='9' fill='%238a6e2f'%3E✓%3C/text%3E%3Ccircle cx='50' cy='250' r='4' fill='%23C9A84C'/%3E%3Ctext x='62' y='255' font-family='sans-serif' font-size='13' fill='%23C9A84C'%3EJunior%3C/text%3E%3Ctext x='230' y='255' font-family='monospace' font-size='9' fill='%23C9A84C'%3Eactive%3C/text%3E%3Crect x='300' y='155' width='260' height='100' rx='6' fill='%23161616' stroke='%23C9A84C' stroke-opacity='0.2' stroke-width='1'/%3E%3Ctext x='320' y='185' font-family='monospace' font-size='11' fill='%238a6e2f' letter-spacing='1'%3EMOMENTUM%3C/text%3E%3Ctext x='320' y='215' font-family='monospace' font-size='24' fill='%23C9A84C'%3E124%3C/text%3E%3Ctext x='370' y='215' font-family='sans-serif' font-size='16' fill='%23f0ece3'%3Epts · +12 this month%3C/text%3E%3Crect x='20' y='270' width='540' height='50' rx='6' fill='%23161616' stroke='%23C9A84C' stroke-opacity='0.2' stroke-width='1'/%3E%3Ctext x='40' y='295' font-family='monospace' font-size='11' fill='%238a6e2f' letter-spacing='1'%3EEMPLOYER READY PROFILE%3C/text%3E%3Ctext x='40' y='310' font-family='sans-serif' font-size='14' fill='%23f0ece3'%3ELinkedIn · Resume · Pitch · Ready for review%3C/text%3E%3Crect x='20' y='335' width='540' height='45' rx='6' fill='%23161616' stroke='%23C9A84C' stroke-opacity='0.4' stroke-width='1'/%3E%3Ctext x='40' y='355' font-family='monospace' font-size='11' fill='%238a6e2f' letter-spacing='1'%3ETALK TO YOUR COACH%3C/text%3E%3Ctext x='40' y='370' font-family='sans-serif' font-size='14' fill='%23f0ece3'%3E“How do I prepare for summer internships?”%3C/text%3E%3C/svg%3E"
+               alt="AthletIQ Dashboard Preview"
+               loading="lazy" />
+          <span class="dummy-badge">⏵ Live Preview</span>
+        </div>
       </div>
       <div class="dashboard" id="dashboard">
         <!-- Career Readiness Score -->
@@ -417,7 +498,7 @@
           <div class="label">Talk to Your Coach</div>
           <div class="value">“How do I prepare for summer internships?”</div>
         </div>
-        <!-- Outcomes strip: icon-only -->
+        <!-- Outcomes strip -->
         <div class="outcomes-strip">
           <span class="outcome-icon" data-out="0">📄<span class="out-label">Resume</span></span>
           <span class="outcome-icon" data-out="1">🔗<span class="out-label">LinkedIn</span></span>
@@ -439,7 +520,7 @@
         <p class="pct-body">Only a small percentage of athletes will compete professionally. But <strong>100% deserve to be professionally prepared.</strong> Whether your next chapter is corporate, entrepreneurship, graduate school, coaching — or something you haven't discovered yet — AthletIQ helps you prepare before your final season. Because life after sports shouldn't begin after sports ends.</p>
         <div class="pct-stat"><span>NIL income and portal offers are real — but they're short-term. Career readiness is what travels with you to every school, every deal, and every job after.</span></div>
       </div>
-      <div style="background: var(--black3); border: 1px solid var(--border); border-radius: 8px; min-height: 200px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.06em;"><img src="assets/imgs/dashboard-ui.png" alt="dashboard card"></div>
+      <div style="background: var(--black3); border: 1px solid var(--border); border-radius: 8px; min-height: 200px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.06em;">[ Visual: 98% / 2% graphic ]</div>
     </div>
   </div>
 </section>
@@ -538,7 +619,15 @@
           Former Student-Athlete · HBCU Graduate · Cloud & AI Solutions Architect · Sports Tech Builder · Doctor of Business Administration Researcher
         </div>
       </div>
-      <div style="background: var(--black3); border: 1px solid var(--border); border-radius: 8px; min-height: 200px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.06em;"><img src="assets/imgs/Fred-Founder.jpeg" alt="Fred Founder of AthleteIQ"></div>
+      <div class="founder-photo">
+        <div class="dummy-avatar">FU</div>
+        <div style="font-size: 0.9rem; color: var(--white); font-weight: 500;">Fred Underwood</div>
+        <div class="dummy-label">Founder, AthletIQ</div>
+        <div style="margin-top: 12px; font-size: 0.6rem; color: var(--muted); text-align: center; line-height: 1.6;">
+          Former Student-Athlete · HBCU Graduate<br>
+          Cloud & AI Solutions Architect
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -579,7 +668,6 @@
     if (rect.top < windowHeight * 0.75) {
       animated = true;
 
-      // Cards fade in with delay
       cards.forEach((card, i) => {
         const delay = parseInt(card.dataset.delay) || 0;
         setTimeout(() => {
@@ -587,26 +675,22 @@
         }, delay);
       });
 
-      // Progress bar animation
       setTimeout(() => {
         progressFill.classList.add('animated');
       }, 200);
 
-      // Season steps reveal
       steps.forEach((step, i) => {
         setTimeout(() => {
           step.classList.add('visible');
         }, 400 + i * 200);
       });
 
-      // Outcomes strip
       outcomes.forEach((out, i) => {
         setTimeout(() => {
           out.classList.add('visible');
         }, 600 + i * 150);
       });
 
-      // Momentum counter
       if (!counterStarted) {
         counterStarted = true;
         let count = 0;
@@ -632,25 +716,20 @@
     }
   }
 
-  // Also trigger on load after a small delay
   window.addEventListener('load', () => {
     setTimeout(animateDashboard, 300);
   });
   window.addEventListener('scroll', animateDashboard);
-  // Fallback: check again after 1s
   setTimeout(animateDashboard, 1000);
 
-  // ---- Season stages toggle ----
   function toggleStage(el) {
     document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
     el.classList.add('active');
   }
 
-  // ---- Value cards toggle ----
   function toggleValue(el) {
     el.classList.toggle('open');
   }
-  // Auto-open first value card for demo
   document.querySelector('.value-card')?.classList.add('open');
 </script>
 </body>
