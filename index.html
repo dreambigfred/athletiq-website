@@ -344,7 +344,7 @@
       border: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      align-items: center;
+      /* align-items: center; */
       justify-content: center;
       color: var(--muted);
       font-family: 'DM Mono', monospace;
@@ -407,6 +407,69 @@
       .outcome-icon.visible { opacity: 1; }
       .dashboard-image-wrapper img { transform: rotate(0deg); }
     }
+
+  /* Dashboard image container */
+.pct-visual {
+  background: var(--black3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 40px 30px;
+  /* gives room so the tilted image doesn't get clipped */
+  perspective: 1200px;
+}
+
+.pct-visual-inner {
+  width: 100%;
+  max-width: 480px;
+}
+
+.pct-tilt-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  transform: rotateY(-14deg) rotateX(6deg) rotateZ(5deg);
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+}
+
+/* subtle hover lift on desktop */
+@media (hover: hover) and (pointer: fine) {
+  .pct-tilt-img:hover {
+    transform: rotateY(-8deg) rotateX(3deg) rotateZ(-1deg) scale(1.02);
+  }
+}
+
+/* Tablet: soften the tilt a bit */
+@media (max-width: 900px) {
+  .pct-visual {
+    padding: 30px 20px;
+  }
+  .pct-tilt-img {
+    transform: rotateY(-8deg) rotateX(4deg) rotateZ(-1deg);
+  }
+}
+
+/* Mobile: flatten almost fully so it reads clearly on small screens */
+@media (max-width: 600px) {
+  .pct-visual {
+    min-height: unset;
+    padding: 20px 16px;
+  }
+  .pct-visual-inner {
+    max-width: 100%;
+  }
+  .pct-tilt-img {
+    transform: rotateY(-4deg) rotateX(2deg);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  }
+}
   </style>
 </head>
 <body>
@@ -419,7 +482,8 @@
       <li><a href="#gameplan">Game Plan</a></li>
       <li><a href="#value">Translate</a></li>
       <li><a href="#founder">Founder</a></li>
-      <li><a href="#" class="nav-cta">Build Your Free Profile</a></li>
+      <li><a href="https://app.athq.tech/login">Login</a></li>
+      <li><a href="https://app.athq.tech/signup" class="nav-cta">Build Your Free Profile</a></li>
     </ul>
   </div>
 </nav>
@@ -511,6 +575,7 @@
 </section>
 
 <!-- 3. BUILT FOR THE 98% -->
+ <!-- 3. BUILT FOR THE 98% -->
 <section id="pct98">
   <div class="container">
     <div class="pct-grid">
@@ -520,10 +585,29 @@
         <p class="pct-body">Only a small percentage of athletes will compete professionally. But <strong>100% deserve to be professionally prepared.</strong> Whether your next chapter is corporate, entrepreneurship, graduate school, coaching — or something you haven't discovered yet — AthletIQ helps you prepare before your final season. Because life after sports shouldn't begin after sports ends.</p>
         <div class="pct-stat"><span>NIL income and portal offers are real — but they're short-term. Career readiness is what travels with you to every school, every deal, and every job after.</span></div>
       </div>
-      <div style="background: var(--black3); border: 1px solid var(--border); border-radius: 8px; min-height: 200px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.06em;">[ Visual: 98% / 2% graphic ]</div>
+
+      <div class="pct-visual">
+        <div class="pct-visual-inner">
+          <img src="assets/imgs/dashboard-ui.png" alt="AthletIQ dashboard" class="pct-tilt-img">
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- <section id="pct98">
+  <div class="container">
+    <div class="pct-grid">
+      <div>
+        <p class="eyebrow">The Mission</p>
+        <h2 class="display pct-headline">Built for the 98%</h2>
+        <p class="pct-body">Only a small percentage of athletes will compete professionally. But <strong>100% deserve to be professionally prepared.</strong> Whether your next chapter is corporate, entrepreneurship, graduate school, coaching — or something you haven't discovered yet — AthletIQ helps you prepare before your final season. Because life after sports shouldn't begin after sports ends.</p>
+        <div class="pct-stat"><span>NIL income and portal offers are real — but they're short-term. Career readiness is what travels with you to every school, every deal, and every job after.</span></div>
+      </div>
+      <div style="background: var(--black3); border: 1px solid var(--border); border-radius: 8px; min-height: 200px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.06em;"><img src="assets/imgs/dashboard-ui.png" alt=""></div>
+    </div>
+  </div>
+</section> -->
 
 <!-- 4. EVERY WEEK HAS A GAME PLAN -->
 <section id="gameplan">
@@ -619,7 +703,7 @@
           Former Student-Athlete · HBCU Graduate · Cloud & AI Solutions Architect · Sports Tech Builder · Doctor of Business Administration Researcher
         </div>
       </div>
-      <div class="founder-photo">
+      <!-- <div class="founder-photo">
         <div class="dummy-avatar">FU</div>
         <div style="font-size: 0.9rem; color: var(--white); font-weight: 500;">Fred Underwood</div>
         <div class="dummy-label">Founder, AthletIQ</div>
@@ -627,7 +711,21 @@
           Former Student-Athlete · HBCU Graduate<br>
           Cloud & AI Solutions Architect
         </div>
-      </div>
+      </div> -->
+      <div class="founder-photo">
+    <img src="assets/imgs/Fred-Founder-no-bg.png" alt="Fred Underwood" class="founder-image">
+
+    <div class="founder-name">Fred Underwood</div>
+
+    <div class="founder-role">
+        Founder, AthletIQ
+    </div>
+
+    <div class="founder-details">
+        Former Student-Athlete · HBCU Graduate<br>
+        Cloud & AI Solutions Architect
+    </div>
+</div>
     </div>
   </div>
 </section>
@@ -637,7 +735,7 @@
   <div class="container">
     <h2 class="display final-headline">Your Coaches Prepare You for Competition.<br><em>AthletIQ Prepares You for Everything That Comes After.</em></h2>
     <p class="final-sub">Start building your career today — it's free.</p>
-    <a href="#" class="btn-primary">Build Your Free Profile →</a>
+    <a href="https://app.athq.tech/signup" class="btn-primary">Build Your Free Profile →</a>
   </div>
 </section>
 
