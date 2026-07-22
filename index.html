@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="AthletIQ — AI-powered career development for student-athletes. Built for the 98%." />
-  <title>AthletIQ — Your Career. Coached.</title>
+  <meta name="description" content="Next Mode — AI-powered career development for student-athletes. Powered by Dream Big Tech and built on the Next Play Framework™." />
+  <title>Next Mode — Prepare for What's Next.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/imgs/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/imgs/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/imgs/favicon/favicon-16x16.png">
+  <link rel="manifest" href="assets/imgs/favicon/site.webmanifest">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -61,13 +66,47 @@
     .nav-inner {
       max-width: 1080px; margin: 0 auto; padding: 0 24px;
       height: 60px; display: flex; align-items: center; justify-content: space-between;
+      position: relative;
     }
     .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.08em; color: var(--gold); text-decoration: none; }
+    .nav-toggle {
+      display: none;
+      width: 32px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .nav-toggle span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: var(--white);
+      border-radius: 999px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
     .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links.open { display: flex; }
     .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--white); }
     .nav-cta { background: var(--gold); color: var(--black) !important; padding: 8px 18px; font-weight: 600 !important; border-radius: 2px; }
     .nav-cta:hover { background: #d4b05a !important; color: var(--black) !important; }
+
+    .hero-architecture { margin-top: 20px; font-size: 0.85rem; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; font-family: 'DM Mono', monospace; }
 
     /* ── 1. HERO ── */
     #hero { padding-top: 140px; padding-bottom: 80px; }
@@ -327,7 +366,7 @@
     .dept-card .name { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; color: var(--gold); text-transform: uppercase; }
     .dept-card .desc { font-size: 0.78rem; color: var(--muted); margin-top: 8px; line-height: 1.4; }
 
-    /* ── 8. WHY I BUILT ATHLETIQ ── */
+    /* ── 8. WHY I BUILT NEXT MODE ── */
     #founder { background: var(--black2); }
     .founder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
     .founder-quote { font-size: 1.05rem; color: var(--white); line-height: 1.8; font-weight: 300; }
@@ -379,21 +418,78 @@
     .final-sub { color: var(--muted); font-size: 1rem; max-width: 440px; margin: 0 auto 40px; font-weight: 300; }
 
     /* ── FOOTER ── */
-    footer { border-top: 1px solid var(--border); padding: 40px 0; }
-    .footer-inner { max-width: 1080px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    footer { border-top: 1px solid var(--border); padding: 40px 0 32px; }
+    .footer-inner {
+      max-width: 1080px; margin: 0 auto; padding: 0 24px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    }
     .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.08em; color: var(--gold); }
     .footer-tagline { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
     .footer-links { display: flex; gap: 24px; list-style: none; }
     .footer-links a { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
     .footer-links a:hover { color: var(--white); }
     .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; color: var(--muted); }
+    .footer-architecture {
+      max-width: 1080px;
+      margin: 24px auto 0;
+      padding: 18px 24px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .footer-architecture-title { color: var(--gold); }
+    .footer-architecture-stack {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .footer-architecture-arrow { color: var(--gold-dim); }
+    .footer-architecture-meta {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 4px;
+    }
+    .footer-architecture-meta div {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center;
+    }
+    .footer-architecture-label { color: var(--gold-dim); font-size: 0.55rem; }
 
     @media (max-width: 768px) {
       .product-grid, .pct-grid, .gameplan-grid, .founder-grid { grid-template-columns: 1fr; gap: 40px; }
       .value-grid { grid-template-columns: 1fr; }
       .dept-grid { grid-template-columns: 1fr 1fr; }
       .season-stages { flex-direction: column; }
-      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        left: 0;
+        background: rgba(6,6,6,0.98);
+        flex-direction: column;
+        gap: 0;
+        padding: 16px 24px 20px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { margin-bottom: 14px; }
+      .nav-links li:last-child { margin-bottom: 0; }
+      .nav-links a { display: block; padding: 10px 0; }
       .dashboard { grid-template-columns: 1fr; }
       .outcomes-strip { grid-column: span 1; }
       .dashboard-image-wrapper img { transform: rotate(-1.5deg) scale(1.02); }
@@ -475,14 +571,20 @@
 <body>
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">AthletIQ</a>
-    <ul class="nav-links">
+    <a href="#" class="nav-logo"><img width="100%" height="30px" src="assets/imgs/next_mode_logo.PNG" alt="Next Mode Logo"></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation" type="button">
+      <span class="sr-only">Open menu</span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="primary-navigation">
       <li><a href="#product">Product</a></li>
       <li><a href="#pct98">Mission</a></li>
       <li><a href="#gameplan">Game Plan</a></li>
       <li><a href="#value">Translate</a></li>
       <li><a href="#founder">Founder</a></li>
-      <li><a href="https://app.athq.tech/login">Login</a></li>
+      <li><a href="https://app.athq.tech/login" class="nav-cta">Login</a></li>
       <li><a href="https://app.athq.tech/signup" class="nav-cta">Build Your Free Profile</a></li>
     </ul>
   </div>
@@ -492,11 +594,12 @@
 <section id="hero">
   <div class="container">
     <h1 class="display hero-headline">Your Career.<br><em>Coached.</em></h1>
-    <p class="hero-sub">AthletIQ is the AI-powered career development platform built specifically for student-athletes — providing personalized coaching, weekly career game plans, and on-demand guidance so you're ready for what's next long before your final season.</p>
+    <p class="hero-sub">Next Mode helps athletes save time, accelerate career development, and prepare for life beyond sport through personalized AI-powered guidance. Powered by Dream Big Tech. Built on the Next Play Framework™.</p>
     <div class="hero-actions">
       <a href="https://app.athq.tech/signup" class="btn-primary">Build Your Free Profile →</a>
       <a href="#product" class="btn-ghost">See How It Works</a>
     </div>
+    <div class="hero-architecture">Dream Big Tech → Next Play Framework™ → Next Mode™ → Next Play Index™</div>
     <div class="value-pills">
       <span class="pill">Personalized Coaching</span>
       <span class="pill">Weekly Career Game Plans</span>
@@ -512,12 +615,12 @@
     <h2 class="display section-title">Product Preview</h2>
     <div class="product-grid">
       <div>
-        <p class="section-sub" style="max-width:100%;">AthletIQ creates a personalized coaching experience that grows with you every week.</p>
-        <div class="product-support">Real dashboard — no generic AI graphics. Your career readiness, weekly plan, and momentum, all in one place.</div>
+        <p class="section-sub" style="max-width:100%">Next Mode creates a personalized coaching experience that grows with you every week.</p>
+        <div class="product-support">Real dashboard — no generic AI graphics. Powered by Dream Big Tech with research from the Next Play Framework™.</div>
         <!-- Slanted dashboard dummy image -->
         <div class="dashboard-image-wrapper">
           <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%230e0e0e'/%3E%3Crect x='20' y='20' width='260' height='120' rx='6' fill='%23161616' stroke='%23C9A84C' stroke-opacity='0.2' stroke-width='1'/%3E%3Ctext x='40' y='55' font-family='monospace' font-size='11' fill='%238a6e2f' letter-spacing='1'%3ECAREER READINESS SCORE%3C/text%3E%3Ctext x='40' y='85' font-family='sans-serif' font-size='20' fill='%23f0ece3' font-weight='500'%3E84 · Ahead of 72% of peers%3C/text%3E%3Crect x='300' y='20' width='260' height='120' rx='6' fill='%23161616' stroke='%23C9A84C' stroke-opacity='0.2' stroke-width='1'/%3E%3Ctext x='320' y='55' font-family='monospace' font-size='11' fill='%238a6e2f' letter-spacing='1'%3EWEEKLY CAREER GAME PLAN%3C/text%3E%3Ctext x='320' y='85' font-family='sans-serif' font-size='16' fill='%23f0ece3'%3E3 actions · 18 min this week%3C/text%3E%3Crect x='320' y='100' width='220' height='4' rx='2' fill='%23161616'/%3E%3Crect x='320' y='100' width='158' height='4' rx='2' fill='%23C9A84C'/%3E%3Crect x='20' y='155' width='260' height='100' rx='6' fill='%23161616' stroke='%23C9A84C' stroke-opacity='0.2' stroke-width='1'/%3E%3Ctext x='40' y='185' font-family='monospace' font-size='11' fill='%238a6e2f' letter-spacing='1'%3ESEASON PATH%3C/text%3E%3Ccircle cx='50' cy='210' r='4' fill='%23C9A84C'/%3E%3Ctext x='62' y='215' font-family='sans-serif' font-size='13' fill='%23f0ece3'%3EFreshman%3C/text%3E%3Ctext x='230' y='215' font-family='monospace' font-size='9' fill='%238a6e2f'%3E✓%3C/text%3E%3Ccircle cx='50' cy='230' r='4' fill='%23C9A84C'/%3E%3Ctext x='62' y='235' font-family='sans-serif' font-size='13' fill='%23f0ece3'%3ESophomore%3C/text%3E%3Ctext x='230' y='235' font-family='monospace' font-size='9' fill='%238a6e2f'%3E✓%3C/text%3E%3Ccircle cx='50' cy='250' r='4' fill='%23C9A84C'/%3E%3Ctext x='62' y='255' font-family='sans-serif' font-size='13' fill='%23C9A84C'%3EJunior%3C/text%3E%3Ctext x='230' y='255' font-family='monospace' font-size='9' fill='%23C9A84C'%3Eactive%3C/text%3E%3Crect x='300' y='155' width='260' height='100' rx='6' fill='%23161616' stroke='%23C9A84C' stroke-opacity='0.2' stroke-width='1'/%3E%3Ctext x='320' y='185' font-family='monospace' font-size='11' fill='%238a6e2f' letter-spacing='1'%3EMOMENTUM%3C/text%3E%3Ctext x='320' y='215' font-family='monospace' font-size='24' fill='%23C9A84C'%3E124%3C/text%3E%3Ctext x='370' y='215' font-family='sans-serif' font-size='16' fill='%23f0ece3'%3Epts · +12 this month%3C/text%3E%3Crect x='20' y='270' width='540' height='50' rx='6' fill='%23161616' stroke='%23C9A84C' stroke-opacity='0.2' stroke-width='1'/%3E%3Ctext x='40' y='295' font-family='monospace' font-size='11' fill='%238a6e2f' letter-spacing='1'%3EEMPLOYER READY PROFILE%3C/text%3E%3Ctext x='40' y='310' font-family='sans-serif' font-size='14' fill='%23f0ece3'%3ELinkedIn · Resume · Pitch · Ready for review%3C/text%3E%3Crect x='20' y='335' width='540' height='45' rx='6' fill='%23161616' stroke='%23C9A84C' stroke-opacity='0.4' stroke-width='1'/%3E%3Ctext x='40' y='355' font-family='monospace' font-size='11' fill='%238a6e2f' letter-spacing='1'%3ETALK TO YOUR COACH%3C/text%3E%3Ctext x='40' y='370' font-family='sans-serif' font-size='14' fill='%23f0ece3'%3E“How do I prepare for summer internships?”%3C/text%3E%3C/svg%3E"
-               alt="AthletIQ Dashboard Preview"
+               alt="Next Mode Dashboard Preview"
                loading="lazy" />
           <span class="dummy-badge">⏵ Live Preview</span>
         </div>
@@ -582,13 +685,13 @@
       <div>
         <p class="eyebrow">The Mission</p>
         <h2 class="display pct-headline">Built for the 98%</h2>
-        <p class="pct-body">Only a small percentage of athletes will compete professionally. But <strong>100% deserve to be professionally prepared.</strong> Whether your next chapter is corporate, entrepreneurship, graduate school, coaching — or something you haven't discovered yet — AthletIQ helps you prepare before your final season. Because life after sports shouldn't begin after sports ends.</p>
-        <div class="pct-stat"><span>NIL income and portal offers are real — but they're short-term. Career readiness is what travels with you to every school, every deal, and every job after.</span></div>
+        <p class="pct-body">Only a small percentage of athletes will compete professionally. But <strong>100% deserve to be professionally prepared.</strong> Whether your next chapter is corporate, entrepreneurship, graduate school, coaching — or something you haven't discovered yet — Next Mode helps you prepare before your final season. Because life after sports shouldn't begin after sports ends.</p>
+        <div class="pct-stat"><span>NIL income and portal offers are real — but they're short-term. Career readiness is what travels with you to every school, every deal, and every job after. The Next Play Index™ makes that progress visible.</span></div>
       </div>
 
       <div class="pct-visual">
         <div class="pct-visual-inner">
-          <img src="assets/imgs/dashboard-ui.png" alt="AthletIQ dashboard" class="pct-tilt-img">
+          <img src="assets/imgs/dashboard-ui.png" alt="Next Mode dashboard" class="pct-tilt-img">
         </div>
       </div>
     </div>
@@ -601,7 +704,7 @@
       <div>
         <p class="eyebrow">The Mission</p>
         <h2 class="display pct-headline">Built for the 98%</h2>
-        <p class="pct-body">Only a small percentage of athletes will compete professionally. But <strong>100% deserve to be professionally prepared.</strong> Whether your next chapter is corporate, entrepreneurship, graduate school, coaching — or something you haven't discovered yet — AthletIQ helps you prepare before your final season. Because life after sports shouldn't begin after sports ends.</p>
+        <p class="pct-body">Only a small percentage of athletes will compete professionally. But <strong>100% deserve to be professionally prepared.</strong> Whether your next chapter is corporate, entrepreneurship, graduate school, coaching — or something you haven't discovered yet — Next Mode helps you prepare before your final season. Because life after sports shouldn't begin after sports ends.</p>
         <div class="pct-stat"><span>NIL income and portal offers are real — but they're short-term. Career readiness is what travels with you to every school, every deal, and every job after.</span></div>
       </div>
       <div style="background: var(--black3); border: 1px solid var(--border); border-radius: 8px; min-height: 200px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.06em;"><img src="assets/imgs/dashboard-ui.png" alt=""></div>
@@ -616,7 +719,7 @@
     <h2 class="display section-title">Every Week Has a Game Plan</h2>
     <div class="gameplan-grid">
       <div>
-        <p class="section-sub" style="max-width:100%;">One headline, one sentence. AthletIQ keeps coaching after you leave the website — an ongoing relationship, not a one-time tool.</p>
+        <p class="section-sub" style="max-width:100%;">One headline, one sentence. Next Mode keeps coaching after you leave the website — an ongoing relationship, not a one-time tool.</p>
         <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 12px;">
           <div style="background: var(--black3); border: 1px solid var(--border); padding: 16px; border-radius: 4px; display: flex; align-items: center; gap: 12px;"><span style="color: var(--gold);">✉</span> <span style="color: var(--white);">Sunday email briefing</span> <span style="margin-left: auto; font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted);">Every week</span></div>
           <div style="background: var(--black3); border: 1px solid var(--border); padding: 16px; border-radius: 4px; display: flex; align-items: center; gap: 12px;"><span style="color: var(--gold);">◆</span> <span style="color: var(--white);">Dashboard check-in</span> <span style="margin-left: auto; font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted);">Live</span></div>
@@ -684,29 +787,29 @@
       <div class="dept-card"><span class="icon">📊</span><div class="name">Career Readiness Tracking</div><div class="desc">Real-time visibility into athlete progress</div></div>
       <div class="dept-card"><span class="icon">🏆</span><div class="name">Supports Student Success</div><div class="desc">Retention, graduation, and post-grad outcomes</div></div>
     </div>
-    <div style="margin-top: 40px; text-align: center;"><a href="#" class="btn-primary">Bring AthletIQ to Your Department →</a></div>
+    <div style="margin-top: 40px; text-align: center;"><a href="https://app.athq.tech/onboarding" class="btn-primary">Bring Next Mode to Your Department →</a></div>
   </div>
 </section>
 
-<!-- 8. WHY I BUILT ATHLETIQ -->
+<!-- 8. WHY I BUILT NEXT MODE -->
 <section id="founder">
   <div class="container">
     <div class="founder-grid">
       <div>
         <p class="eyebrow">Trust / Founder</p>
-        <h2 class="display section-title">Why I Built AthletIQ</h2>
+        <h2 class="display section-title">Why I Built Next Mode</h2>
         <div class="founder-quote">
-          As a former student-athlete and HBCU graduate, I experienced firsthand how the lessons learned through sports don't always translate into career opportunities. Over the past decade, I've built my career at three of the world's leading technology companies while helping organizations leverage cloud and AI. Along the way, I continued mentoring athletes and saw the same challenge over and over: incredible talent, but no personalized way to translate that experience into career success. <strong>AthletIQ was built to bridge that gap</strong> — combining AI with continuous coaching to help every student-athlete build confidence, communicate their value, and prepare for life after sports.
+          As a former student-athlete and HBCU graduate, I experienced firsthand how the lessons learned through sports don't always translate into career opportunities. Over the past decade, I've built my career at three of the world's leading technology companies while helping organizations leverage cloud and AI. Along the way, I continued mentoring athletes and saw the same challenge over and over: incredible talent, but no personalized way to translate that experience into career success. <strong>Next Mode was built to bridge that gap</strong> — combining personalized guidance with continuous coaching to help every student-athlete build confidence, communicate their value, and prepare for life after sports.
         </div>
         <div class="founder-meta">
-          <span class="highlight">Fred Underwood</span> — Founder, AthletIQ<br>
+          <span class="highlight">Fred Underwood</span> — Founder, Next Mode<br>
           Former Student-Athlete · HBCU Graduate · Cloud & AI Solutions Architect · Sports Tech Builder · Doctor of Business Administration Researcher
         </div>
       </div>
       <!-- <div class="founder-photo">
         <div class="dummy-avatar">FU</div>
         <div style="font-size: 0.9rem; color: var(--white); font-weight: 500;">Fred Underwood</div>
-        <div class="dummy-label">Founder, AthletIQ</div>
+        <div class="dummy-label">Founder, Next Mode</div>
         <div style="margin-top: 12px; font-size: 0.6rem; color: var(--muted); text-align: center; line-height: 1.6;">
           Former Student-Athlete · HBCU Graduate<br>
           Cloud & AI Solutions Architect
@@ -718,7 +821,7 @@
     <div class="founder-name">Fred Underwood</div>
 
     <div class="founder-role">
-        Founder, AthletIQ
+        Founder, Next Mode
     </div>
 
     <div class="founder-details">
@@ -733,7 +836,7 @@
 <!-- 9. FINAL CTA -->
 <section id="final-cta">
   <div class="container">
-    <h2 class="display final-headline">Your Coaches Prepare You for Competition.<br><em>AthletIQ Prepares You for Everything That Comes After.</em></h2>
+    <h2 class="display final-headline">Your Coaches Prepare You for Competition.<br><em>Next Mode Prepares You for Everything That Comes After.</em></h2>
     <p class="final-sub">Start building your career today — it's free.</p>
     <a href="https://app.athq.tech/signup" class="btn-primary">Build Your Free Profile →</a>
   </div>
@@ -741,9 +844,25 @@
 
 <footer>
   <div class="footer-inner">
-    <div><div class="footer-logo">AthletIQ</div><div class="footer-tagline">Intelligence. Elevation. Legacy.</div></div>
+    <div><div class="footer-logo"><img width="100%" height="30px" src="assets/imgs/next_mode_logo.png" alt=""></div><div class="footer-tagline">Intelligence. Elevation. Legacy.</div></div>
     <ul class="footer-links"><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Contact</a></li></ul>
-    <div class="footer-copy">© 2026 AthletIQ, Inc.</div>
+    <div class="footer-copy">© 2026 Next Mode, Inc.</div>
+  </div>
+  <div class="footer-architecture">
+    <!-- <div class="footer-architecture-title">Brand Architecture</div> -->
+    <div class="footer-architecture-stack">
+      <span>Dream Big Tech</span>
+      <span class="footer-architecture-arrow">→</span>
+      <span>Next Play Framework™</span>
+      <span class="footer-architecture-arrow">→</span>
+      <span>Next Mode™</span>
+      <span class="footer-architecture-arrow">→</span>
+      <span>Next Play Index™</span>
+    </div>
+    <!-- <div class="footer-architecture-meta">
+      <div><span class="footer-architecture-label">Product</span><span>Next Mode™</span></div>
+      <div><span class="footer-architecture-label">Company</span><span>Dream Big Tech</span></div>
+    </div> -->
   </div>
 </footer>
 
@@ -829,6 +948,23 @@
     el.classList.toggle('open');
   }
   document.querySelector('.value-card')?.classList.add('open');
+
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  navToggle?.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
 </script>
 </body>
 </html>
