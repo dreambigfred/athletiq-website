@@ -485,6 +485,7 @@
         flex-direction: column;
         gap: 0;
         padding: 16px 24px 20px;
+        transition: background 0.25s ease;
       }
       .nav-links.open { display: flex; }
       .nav-links li { margin-bottom: 14px; }
@@ -632,6 +633,8 @@
     body.light-theme .theme-toggle { background: rgba(0,0,0,0.08); border-color: var(--border); color: var(--white);}
     body.light-theme .theme-toggle:hover { border-color: var(--gold-dim); background: rgba(184,149,58,0.15);}
     body.light-theme .stage.active { border-color: var(--gold); }
+    body.light-theme .nav-links.open {background: rgba(245,242,235,0.98) !important;}
+    body.light-theme .nav-links { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);}
 
     /* ---- theme toggle button (icon only) ---- */
 .theme-toggle {
