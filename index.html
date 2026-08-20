@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
   <link rel="apple-touch-icon" sizes="180x180" href="assets/imgs/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/imgs/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/imgs/favicon/favicon-16x16.png">
@@ -68,7 +67,44 @@
       height: 60px; display: flex; align-items: center; justify-content: space-between;
       position: relative;
     }
-    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.08em; color: var(--gold); text-decoration: none; }
+    .nav-logo { 
+      font-family: 'Bebas Neue', sans-serif; 
+      font-size: 1.4rem; 
+      letter-spacing: 0.08em; 
+      color: var(--gold); 
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+   
+    .nav-logo {
+  display: flex;
+  align-items: center;
+  height: 36px;
+}
+
+.nav-logo img {
+  display: block;
+  object-fit: contain;
+}
+
+.nav-logo .logo-dark {
+  height: 30px;
+}
+
+.nav-logo .logo-light {
+  /* height: 36px; */
+  width: auto;
+  margin-top: 10px;
+  height: 110px;
+}
+
+    /* light-mode logo override via class on body */
+    body.light-theme .nav-logo .logo-dark { display: none; }
+    body.light-theme .nav-logo .logo-light { display: block; }
+    body:not(.light-theme) .nav-logo .logo-dark { display: block; }
+    body:not(.light-theme) .nav-logo .logo-light { display: none; }
+
     .nav-toggle {
       display: none;
       width: 32px;
@@ -327,6 +363,47 @@
     .pct-stat { margin-top: 24px; padding: 16px; background: var(--black2); border-left: 2px solid var(--gold); }
     .pct-stat span { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--gold-dim); letter-spacing: 0.06em; }
 
+    .pct-visual {
+      background: var(--black3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 40px 30px;
+      perspective: 1200px;
+    }
+    .pct-visual-inner {
+      width: 100%;
+      max-width: 480px;
+    }
+    .pct-tilt-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+      transform: rotateY(-14deg) rotateX(6deg) rotateZ(5deg);
+      transform-style: preserve-3d;
+      transition: transform 0.4s ease;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .pct-tilt-img:hover {
+        transform: rotateY(-8deg) rotateX(3deg) rotateZ(-1deg) scale(1.02);
+      }
+    }
+    @media (max-width: 900px) {
+      .pct-visual { padding: 30px 20px; }
+      .pct-tilt-img { transform: rotateY(-8deg) rotateX(4deg) rotateZ(-1deg); }
+    }
+    @media (max-width: 600px) {
+      .pct-visual { min-height: unset; padding: 20px 16px; }
+      .pct-visual-inner { max-width: 100%; }
+      .pct-tilt-img { transform: rotateY(-4deg) rotateX(2deg); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); }
+    }
+
     /* ── 4. EVERY WEEK HAS A GAME PLAN ── */
     #gameplan { background: var(--black2); }
     .gameplan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
@@ -374,7 +451,6 @@
     .founder-meta { margin-top: 24px; font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; color: var(--muted); line-height: 1.8; }
     .founder-meta .highlight { color: var(--gold); }
 
-    /* Founder dummy photo */
     .founder-photo {
       width: 100%;
       aspect-ratio: 1/1;
@@ -383,7 +459,6 @@
       border: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      /* align-items: center; */
       justify-content: center;
       color: var(--muted);
       font-family: 'DM Mono', monospace;
@@ -391,6 +466,7 @@
       letter-spacing: 0.06em;
       position: relative;
       overflow: hidden;
+      align-items: center;
     }
     .founder-photo .dummy-avatar {
       width: 80px;
@@ -469,106 +545,7 @@
     }
     .footer-architecture-label { color: var(--gold-dim); font-size: 0.55rem; }
 
-    @media (max-width: 768px) {
-      .product-grid, .pct-grid, .gameplan-grid, .founder-grid { grid-template-columns: 1fr; gap: 40px; }
-      .value-grid { grid-template-columns: 1fr; }
-      .dept-grid { grid-template-columns: 1fr 1fr; }
-      .season-stages { flex-direction: column; }
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        left: 0;
-        background: rgba(6,6,6,0.98);
-        flex-direction: column;
-        gap: 0;
-        padding: 16px 24px 20px;
-        transition: background 0.25s ease;
-      }
-      .nav-links.open { display: flex; }
-      .nav-links li { margin-bottom: 14px; }
-      .nav-links li:last-child { margin-bottom: 0; }
-      .nav-links a { display: block; padding: 10px; }
-      .dashboard { grid-template-columns: 1fr; }
-      .outcomes-strip { grid-column: span 1; }
-      .dashboard-image-wrapper img { transform: rotate(-1.5deg) scale(1.02); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; transition: none !important; }
-      .dash-card { opacity: 1; transform: none; }
-      .dash-card.highlight.visible { box-shadow: none; }
-      .dash-card .progress-fill.animated { width: 72%; }
-      .season-step.visible { opacity: 1; }
-      .outcome-icon.visible { opacity: 1; }
-      .dashboard-image-wrapper img { transform: rotate(0deg); }
-    }
-
-  /* Dashboard image container */
-.pct-visual {
-  background: var(--black3);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  min-height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 40px 30px;
-  /* gives room so the tilted image doesn't get clipped */
-  perspective: 1200px;
-}
-
-.pct-visual-inner {
-  width: 100%;
-  max-width: 480px;
-}
-
-.pct-tilt-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
-  transform: rotateY(-14deg) rotateX(6deg) rotateZ(5deg);
-  transform-style: preserve-3d;
-  transition: transform 0.4s ease;
-}
-
-/* subtle hover lift on desktop */
-@media (hover: hover) and (pointer: fine) {
-  .pct-tilt-img:hover {
-    transform: rotateY(-8deg) rotateX(3deg) rotateZ(-1deg) scale(1.02);
-  }
-}
-
-/* Tablet: soften the tilt a bit */
-@media (max-width: 900px) {
-  .pct-visual {
-    padding: 30px 20px;
-  }
-  .pct-tilt-img {
-    transform: rotateY(-8deg) rotateX(4deg) rotateZ(-1deg);
-  }
-}
-
-/* Mobile: flatten almost fully so it reads clearly on small screens */
-@media (max-width: 600px) {
-  .pct-visual {
-    min-height: unset;
-    padding: 20px 16px;
-  }
-  .pct-visual-inner {
-    max-width: 100%;
-  }
-  .pct-tilt-img {
-    transform: rotateY(-4deg) rotateX(2deg);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-  }
-}
-
-  /* ----- LIGHT THEME OVERRIDES ----- */
+    /* ----- LIGHT THEME OVERRIDES ----- */
     body.light-theme {
       --black: #f5f2eb;
       --black2: #ece8df;
@@ -624,54 +601,95 @@
     body.light-theme .dash-card.highlight { background: rgba(184,149,58,0.06); }
     body.light-theme .dash-card .progress-track { background: var(--black3); }
     body.light-theme .founder-photo { background: var(--black3); }
-    body.light-theme .founder-photo .founder-name { color: var(--white); }
-    body.light-theme .founder-photo .founder-details { color: var(--muted); }
     body.light-theme .dashboard-image-wrapper .dummy-badge { background: var(--black2); color: var(--gold); border-color: var(--gold-dim); }
-    /* body.light-theme .theme-toggle { border-color: var(--border); color: var(--white); }
-    body.light-theme .theme-toggle:hover { border-color: var(--gold-dim); background: rgba(184,149,58,0.08); } */
-    /* In the light theme section */
     body.light-theme .theme-toggle { background: rgba(0,0,0,0.08); border-color: var(--border); color: var(--white);}
     body.light-theme .theme-toggle:hover { border-color: var(--gold-dim); background: rgba(184,149,58,0.15);}
     body.light-theme .stage.active { border-color: var(--gold); }
-    body.light-theme .nav-links.open {background: rgba(245,242,235,0.98) !important;}
-    body.light-theme .nav-links { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);}
+    body.light-theme .nav-links.open {
+      background: rgba(245,242,235,0.98) !important;
+    }
+    body.light-theme .nav-links {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
 
-    /* ---- theme toggle button (icon only) ---- */
-.theme-toggle {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid var(--border);
-  border-radius: 30px;
-  color: var(--white);
-  font-size: 1.1rem;
-  padding: 4px 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.25s ease, border-color 0.25s ease;
-  line-height: 1;
-  height: 32px;
-  width: 44px;
-}
-.theme-toggle:hover {
-  border-color: var(--gold-dim);
-  background: rgba(201,168,76,0.15);
-  cursor: pointer;
-}
-.theme-toggle .icon { 
-  font-size: 1.1rem; 
-  line-height: 1;
-  transition: transform 0.2s ease;
-}
-.theme-toggle:hover .icon {
-  transform: scale(1.1);
-}
+    .theme-toggle {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      color: var(--white);
+      font-size: 1.1rem;
+      padding: 4px 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s ease, border-color 0.25s ease;
+      line-height: 1;
+      height: 32px;
+      width: 44px;
+    }
+    .theme-toggle:hover {
+      border-color: var(--gold-dim);
+      background: rgba(201,168,76,0.15);
+      cursor: pointer;
+    }
+    .theme-toggle .icon { 
+      font-size: 1.1rem; 
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+    .theme-toggle:hover .icon {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .product-grid, .pct-grid, .gameplan-grid, .founder-grid { grid-template-columns: 1fr; gap: 40px; }
+      .value-grid { grid-template-columns: 1fr; }
+      .dept-grid { grid-template-columns: 1fr 1fr; }
+      .season-stages { flex-direction: column; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        left: 0;
+        background: rgba(6,6,6,0.98);
+        flex-direction: column;
+        gap: 0;
+        padding: 16px 24px 20px;
+        transition: background 0.25s ease;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { margin-bottom: 14px; }
+      .nav-links li:last-child { margin-bottom: 0; }
+      .nav-links a { display: block; padding: 10px; }
+      .dashboard { grid-template-columns: 1fr; }
+      .outcomes-strip { grid-column: span 1; }
+      .dashboard-image-wrapper img { transform: rotate(-1.5deg) scale(1.02); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      .dash-card { opacity: 1; transform: none; }
+      .dash-card.highlight.visible { box-shadow: none; }
+      .dash-card .progress-fill.animated { width: 72%; }
+      .season-step.visible { opacity: 1; }
+      .outcome-icon.visible { opacity: 1; }
+      .dashboard-image-wrapper img { transform: rotate(0deg); }
+    }
   </style>
 </head>
 <body>
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo"><img width="95%" height="30px" src="assets/imgs/next_mode_logo.png" alt="Next Mode Logo"></a>
+    <a href="#" class="nav-logo">
+      <!-- Dark mode logo (default) -->
+
+      <img class="logo-dark" width="95%" height="30px" src="assets/imgs/next_mode_logo.png" alt="Next Mode Logo">
+      <!-- Light mode logo (different color) -->
+      <img class="logo-light" width="95%" height="30px" src="assets/imgs/light.png" alt="Next Mode Logo light">
+    </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation" type="button">
       <span class="sr-only">Open menu</span>
       <span></span>
@@ -686,7 +704,7 @@
       <li><a href="#founder">Founder</a></li>
       <li><a href="https://app.athq.tech/login" class="nav-cta">Login</a></li>
       <li><a href="https://app.athq.tech/signup" class="nav-cta">Build Your Free Profile</a></li>
-       <li>
+      <li>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
           <span class="icon" id="themeIcon">🌙</span>
         </button>
